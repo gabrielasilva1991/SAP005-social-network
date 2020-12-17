@@ -9,8 +9,8 @@
     <title>Document</title>
   </head>
 
-  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> -->
   
   <body>
     <nav>
@@ -19,28 +19,69 @@
         <li id='login'>Login</li>
         <li id='posts'>Postagens</li>
         <li id='profile'>Perfil</li>
-        <li id='getout'>Sair</li>
+        <li id='logout'>Sair</li>
       </ul>
     </nav>
     
+    <!-- <section class="container-main">
+      <div class="items">
+        <input type="email" class="input-login" id ="email" placeholder ="Digite seu e-mail"/>
+        <input type="password" class="input-login" id="password" placeholder="Senha"/>
+      </div>
+      <div>
+        <button type="submit" class="button-login" id="button-login">Entrar</button>
+        <button type="submit" class="button-register" id="button-register">Criar Conta</button>
+        <button type="submit" class="button-login-google" id="button-login-google">Google</button>
+        <button type="submit" class="button-logout" id="button-logout">Sair</button>
+      </div>
+    </section> -->
+    
 
+    <div class="container">
+      <h3 class="text" id="display-name">Você não está autenticado</h3>
 
-    <main id="container">
+      <Form>
+        <div class="items">
+          <label for="emailInput">E-mail</label>
+          <input type="email" class="input-login" id ="emailInput" placeholder ="Digite seu e-mail"/>
+        </div>
+        <div class="items">
+          <label for="passwordInput">Senha</label>
+          <input type="password" class="input-login" id="passwordInput" placeholder="Senha"/>
+        </div>
+  
+      </Form>
 
-
-
-
-
-    </main>
+    </div>
 
     
 
+    <div>
+      <button type="submit" class="button-login" id="button-login">Entrar</button>
+      <button type="submit" class="button-register" id="button-register">Criar Conta</button>
+      <!-- <button type="submit" class="button-login-google" id="button-login-google">Entrar com Google</button>
+      <button type="submit" class="button-logout" id="button-logout">Sair</button> -->
+    </div>
+      <button type="submit" class="button-logout" id="button-logout">Sair</button>
+    <div>
+
+    </div>
+
+    <p class="text"><small>-- ou --</small></p>
+
+    <div>
+      <button type="submit" class="button-login-google" id="button-login-google">Entrar com Google</button>
+    </div>
 
 
+
+
+    <!-- <button>Posts</button> -->
+    
     <footer>
       <ul class="footer">
         <a href="https://github.com/BiancaSherika" target="_blank"><strong>@ Bianca Sherika</strong></a>
-        <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardoso</strong></a>
+        <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardozo</strong></a>
         <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@ Gabriela Silva</strong></a>
         <a href="https://www.laboratoria.la/" target="_blank"><strong>by Laboratória</strong></a>
       </ul>
@@ -51,13 +92,8 @@
     <div id="root"></div>
     <script type="module" src="router.js"></script>
 
-
-
-    <div id="authentication"></div>
-    <script src="index.js"></script>
-
-
-
+    <script src="login/index.js"></script>
+    
 
   </body>
 </html>

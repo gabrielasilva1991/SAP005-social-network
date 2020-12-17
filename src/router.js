@@ -1,9 +1,6 @@
 // Este é seu ponto de entrada da sua aplicação
-import { Home } from './pages/home/index.js';
+import { Home, Posts, Profile, Logout } from './pages/home/index.js';
 import { Login } from './pages/login/index.js';
-import { Posts } from './pages/home/index.js';
-import { Profile } from './pages/home/index.js';
-import { Getout } from './pages/home/index.js';
 import { onNavigate } from './utils/history.js';
 
 const routeRender = () => {
@@ -13,9 +10,7 @@ const routeRender = () => {
     '/login': Login,
     '/posts': Posts,
     '/profile': Profile,
-    '/getout': Getout,
-
-
+    '/logout': Logout,
   };
 
   rootDiv.innerHTML = '';
@@ -54,10 +49,10 @@ window.addEventListener('load', () => {
     });
 
   document
-    .getElementById('getout')
+    .getElementById('logout')
     .addEventListener('click', (e) => {
       e.preventDefault();
-      onNavigate('/getout')
+      onNavigate('/logout')
     });
 
 

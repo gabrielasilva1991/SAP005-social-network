@@ -10,6 +10,75 @@ export const Login = () => {
 
 
 
+let createUserButton = document.getElementById('button-register')
+let authEmailPassButton = document.getElementById('button-login')
+let authGoogleButton = document.getElementById('button-login-google')
+let logoutButton = document.getElementById('')
+
+
+let emailInput = document.getElementById('email')
+let passwordInput = document.getElementById('password')
+
+let displayName = document.getElementById('display-Name')
+
+
+createUserButton.addEventListener('click', function(){
+  firebase.auth().createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
+    .then(function (){
+      alert('Bem vindo ' + emailInput.value);
+    })
+    .catch(function(error){
+      console.error(error.code);
+      console.error(error.message);
+      alert('Falha ao realizar o cadastro')
+    });
+});
+
+authEmailPassButton.addEventListener('click', function(){
+  firebase.auth().signInWithEmailAndPassword(emailInput.value, passwordInput.value)
+    .then(function (result){
+      console.log(result);
+      displayName.innerText = 'Bem vindo, ' + emailInput.value;
+      alert('Autenticado ' + emailInput.value);
+    })
+    .catch(function(error){
+      console.error(error.code);
+      console.error(error.message);
+      alert('Falha ao realizar o login')
+    });
+});
+
+logoutButton.addEventListener('click', function(){
+  firebase.auth().signOut()
+    .then(function (){
+      displayName.innerText = 'Você não está autenticado';
+      alert('Desconectado');
+    })
+    .catch(function(error){
+      console.error(error);
+    });
+});
+
+
+
+authGoogleButton.addEventListener('clink', function (){
+  // let provider = new firebase.auth.GoogleAuthProvider();
+  // signIn(provider)
+
+  let provider = new firebase.auth.GoogleAuthProvider();
+
+
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    let token = result.credential.accessToken;
+    let user = result.user;
+  })
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+  }) 
+});
 
 
 
