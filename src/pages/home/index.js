@@ -34,13 +34,47 @@ export const Profile = () => {
 };
 
 
-export const Getout = () => {
-  const getoutlogin = document.createElement('div');
+export const Logout = () => {
+  const logoutLogin = document.createElement('div');
 
-  getoutlogin.innerHTML = `
+  logoutLogin.innerHTML = `
     <h1>Sair teste</h1>
 
   `
-  return getoutlogin
+  return logoutLogin
  
 };
+
+
+//import { getPosts, createPost } from '../../services/index.js'
+
+// export const Home = () => {
+//   // Coloque sua página
+//   const rootElement = document.createElement('div');
+
+//   const showPosts = () => {
+//     const posts = getPosts()
+//     let element = ''
+  
+//     posts.map(post => {
+//       element += `
+//         <p>${post.message} </p>
+//       `;
+//     })
+  
+  
+//     rootElement.innerHTML = element
+    
+//   }
+  
+//   document.querySelector('button').addEventListener('click', () =>{
+//     createPost('Post')
+//     showPosts()
+//   })
+  
+//   //showPosts()
+  
+//   return rootElement;
+
+
+// }

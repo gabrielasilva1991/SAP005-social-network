@@ -13,48 +13,37 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   
   <body>
+  
     <nav>
       <ul>
         <li id='home'>Página Inicial</li>
         <li id='login'>Login</li>
         <li id='posts'>Postagens</li>
         <li id='profile'>Perfil</li>
-        <li id='getout'>Sair</li>
+        <li id='logout'>Sair</li>
       </ul>
     </nav>
-    
-
-
-    <main id="container">
-
-
-    </main>
-
-    
-
-
 
     <footer>
       <ul class="footer">
         <a href="https://github.com/BiancaSherika" target="_blank"><strong>@ Bianca Sherika</strong></a>
-        <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardoso</strong></a>
+        <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardozo</strong></a>
         <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@ Gabriela Silva</strong></a>
         <a href="https://www.laboratoria.la/" target="_blank"><strong>by Laboratória</strong></a>
       </ul>
     </footer>
 
-
+    <!-- <button>Posts</button> -->
 
     <div id="root"></div>
+
+    <script src="/__/firebase/8.1.2/firebase-app.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-auth.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-firestore.js"></script>
+    <!-- <script src="/__/firebase/init.js"></script> -->
+    <script src="init.js"></script>
+    <script type="module" src="./services/index.js"></script>
     <script type="module" src="router.js"></script>
-
-
-
-    <div id="authentication"></div>
-    <script src="index.js"></script>
-
-
-
 
   </body>
 </html>
