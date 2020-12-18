@@ -1,5 +1,5 @@
 import { signIn, loginWithGoogle } from '../../services/index.js';
-import { Register } from '../register/index.js';
+import { onNavigate } from '../../utils/history.js';
 
 export const Login = () => {
   const rootElement = document.createElement('div');
@@ -22,20 +22,23 @@ export const Login = () => {
     </div>
     `;
   
-  rootElement.querySelector("#button-login").addEventListener("click", () => {
+  rootElement.querySelector("#button-login").addEventListener("click", (e) => {
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
+    e.preventDefault();
     return signIn(email, password);
   });
 
-  rootElement.querySelector("#button-google").addEventListener("click", () => {
+  rootElement.querySelector("#button-google").addEventListener("click", (e) => {
+    e.preventDefault();
     return loginWithGoogle();
   });
 
-  rootElement.querySelector("#button-create-account").addEventListener("click", () => {
-    return Register();
-  }); 
-
+  rootElement.querySelector("#button-create-account").addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log("chocolate")
+    onNavigate('/register')
+  });
   return rootElement;
 };
 
