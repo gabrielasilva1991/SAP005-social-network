@@ -22,3 +22,5 @@ export const Register = () => {
   
     return rootElement;
   };
+
+  

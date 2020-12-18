@@ -22,6 +22,7 @@ export const Posts = () => {
 };
 
 
+
 export const Profile = () => {
   const profileCreated = document.createElement('div');
 

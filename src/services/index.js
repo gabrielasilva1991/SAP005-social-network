@@ -45,7 +45,6 @@ export const signIn = () => {
 
 
 
-
 // let authEmailPassButton = document.getElementById('button-login')
 // let authGoogleButton = document.getElementById('button-login-google')
 // let logoutButton = document.getElementById('')
