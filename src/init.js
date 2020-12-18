@@ -1,3 +1,4 @@
+// Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBP1Ny3B9pPf7aFkYRkx3yVu2DQCA8vf24",
     authDomain: "rede-social-4f31b.firebaseapp.com",
@@ -8,4 +9,4 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+  

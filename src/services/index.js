@@ -45,6 +45,9 @@ export const signIn = () => {
 
 
 
+
+
+
 // let authEmailPassButton = document.getElementById('button-login')
 // let authGoogleButton = document.getElementById('button-login-google')
 // let logoutButton = document.getElementById('')
@@ -102,17 +105,6 @@ export const signIn = () => {
 
 
 
-
-
-
-
-
-// exporte suas funções
-
-//export const myFunction = () => {
-  // seu código aqui
- // console.log('Olá mundo!');
-//};
 
 
 

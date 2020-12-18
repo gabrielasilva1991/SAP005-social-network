@@ -22,7 +22,6 @@ export const Posts = () => {
 };
 
 
-
 export const Profile = () => {
   const profileCreated = document.createElement('div');
 
@@ -36,17 +35,15 @@ export const Profile = () => {
 
 
 export const Logout = () => {
-  const logoutlogin = document.createElement('div');
+  const logoutLogin = document.createElement('div');
 
-  logoutlogin.innerHTML = `
+  logoutLogin.innerHTML = `
     <h1>Sair teste</h1>
 
   `
-  return logoutlogin
+  return logoutLogin
  
 };
-
-
 
 
 //import { getPosts, createPost } from '../../services/index.js'
