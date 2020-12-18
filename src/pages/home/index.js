@@ -1,3 +1,6 @@
+import { logOut } from '../../services/index.js';
+import { onNavigate } from '../../utils/history.js';
+
 export const Home = () => {
   // Coloque sua página
   const rootElement = document.createElement('div');
@@ -6,9 +9,29 @@ export const Home = () => {
       <h1>Olá, mundo!</h1>
       <h2> A importância dos livros </h2>
       <p> textotextotextotextotextotextotextotextotextotexto </p>
+
+      <nav>
+      <ul>
+        <li id='home'>Página Inicial</li>
+        <li id='login'>Login</li>
+        <li id='posts'>Postagens</li>
+        <li id='profile'>Perfil</li>
+        <li id='logout'>Sair</li>
+      </ul>
+    </nav>
+
+    <button type="submit" class="button-logout" id="button-logout">Sair</button>
   `;
+
+  rootElement.querySelector("#button-logout").addEventListener("click", (e) => {
+    e.preventDefault();
+    onNavigate('/')
+    return logOut();
+  });
+
   return rootElement;
 };
+
 
 export const Posts = () => {
   const postsCreated = document.createElement('div');

@@ -1,46 +1,40 @@
-console.log("entrou")
-
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
-  .then((result) => {
-    //AQUI VAI UMA FUNÇÃO
-    return result;
-  })
   .catch((error) => {
-    //var errorCode = error.code;
-    //var errorMessage = error.message;
-    alert("Ocorreu um erro, tente novamente")
+    alert("Você não conectou com o Google, tente novamente")
   });
 };
 
-export const registerUser = () => {
-  firebase.auth().createUserWithEmailAndPassword(email, password, name)
-  .then((user)=> {
-    //AQUI VAI UMA FUNÇÃO
-    return user;
+export const registerUser = (email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(()=> {
+    alert("Conta criada com sucesso")
   })
   .catch((error) => {
-    //var errorCode = error.code;
-    //var errorMessage = error.message;
     alert("Falha ao realizar o cadastro")
   });
 };
 
-export const signIn = () => {
+export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((user) => {
-    //AQUI VAI UMA FUNÇÃO
-    //window.location.hash = '#login'; => exemplo da internet, MAS não entendi muito bem!!!
-    return user;
+  .then(() => {
+    alert("Login realizado com sucesso")
   })
   .catch((error) => {
-    //var errorCode = error.code;
-    //var errorMessage = error.message;
     alert("Email ou senha incorretos")
   });
 };
 
+export const logOut = () => {
+  firebase.auth().signOut()
+  .then(() => {
+    history.pushState("",document.title, window.location.pathname)})
+    alert("Desconectado")
+  // .catch((error) => {
+  //   alert("Ocorreu um erro, tente novamente")
+  // });
+};
 
 
 
