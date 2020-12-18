@@ -1,7 +1,7 @@
-//import { registerUser } from '../../services/index.js';
+import { registerUser } from '../../services/index.js';
 
 export const Register = () => {
-  // Coloque sua página
+  console.log("pote de feijão")
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
     <h1>Crie sua conta</h1>
@@ -13,12 +13,13 @@ export const Register = () => {
     </form>
   `;
   
-  // rootElement.querySelector("#button-register").addEventListener("click", () => {
-  //   const name = rootElement.querySelector("#name").value;
-  //   const email = rootElement.querySelector("#email").value;
-  //   const password = rootElement.querySelector("#password").value;
-  //   return registerUser(email, password, name);
-  // });
+   rootElement.querySelector("#button-register").addEventListener("click", (e) => {
+     const name = rootElement.querySelector("#name").value;
+     const email = rootElement.querySelector("#email").value;
+     const password = rootElement.querySelector("#password").value;
+     e.preventDefault();
+     return registerUser(name, email, password);
+   });
 
   return rootElement;
 };

@@ -1,5 +1,6 @@
 import { Home, Posts, Profile, Logout } from './pages/home/index.js';
 import { Login } from './pages/login/index.js';
+import { Register } from './pages/register/index.js';
 import { onNavigate } from './utils/history.js';
 
 const routeRender = () => {
@@ -7,6 +8,7 @@ const routeRender = () => {
   const routes = {
     '/' : Home,
     '/login': Login,
+    '/register': Register,
     '/posts': Posts,
     '/profile': Profile,
     '/logout': Logout,
