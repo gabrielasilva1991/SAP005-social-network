@@ -1,7 +1,6 @@
 import { registerUser } from '../../services/index.js';
 
 export const Register = () => {
-  console.log("pote de feijão")
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
     <h1>Crie sua conta</h1>

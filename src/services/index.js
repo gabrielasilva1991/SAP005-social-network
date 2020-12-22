@@ -1,7 +1,14 @@
+import { onNavigate } from '../../utils/history.js';
+
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
-  .catch((error) => {
+  .then(() => {
+    const user = firebase.auth().currentUser
+    checkLogin(user)
+    alert("Login realizado com sucesso")
+  })
+  .catch(() => {
     alert("Você não conectou com o Google, tente novamente")
   });
 };
@@ -9,9 +16,11 @@ export const loginWithGoogle = () => {
 export const registerUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then(()=> {
+    const user = firebase.auth().currentUser
+    checkLogin(user)
     alert("Conta criada com sucesso")
   })
-  .catch((error) => {
+  .catch(() => {
     alert("Falha ao realizar o cadastro")
   });
 };
@@ -19,24 +28,34 @@ export const registerUser = (email, password) => {
 export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(() => {
+    const user = firebase.auth().currentUser
+    checkLogin(user)
     alert("Login realizado com sucesso")
   })
-  .catch((error) => {
-    alert("Email ou senha incorretos")
+  .catch(() => {
+    alert("Email e/ou senha incorretos")
   });
 };
 
 export const logOut = () => {
   firebase.auth().signOut()
   .then(() => {
-    history.pushState("",document.title, window.location.pathname)})
+    history.pushState(null, null, window.location.pathname)})
     alert("Desconectado")
-  // .catch((error) => {
+  // .catch(() => {
   //   alert("Ocorreu um erro, tente novamente")
   // });
 };
 
-
+export const checkLogin = (user) => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      onNavigate('/home')
+    } else {
+      onNavigate('/')
+    }
+  });
+};
 
 
 
