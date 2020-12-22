@@ -1,4 +1,4 @@
-import { loginWithGoogle, signIn } from '../../services/index.js';
+import { loginWithGoogle, signIn, } from '../../services/index.js';
 import { onNavigate } from '../../utils/history.js';
 
 export const Login = () => {
@@ -26,7 +26,6 @@ export const Login = () => {
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
     e.preventDefault();
-    onNavigate('/home')
     return signIn(email, password);
   });
 
@@ -37,11 +36,12 @@ export const Login = () => {
 
   rootElement.querySelector("#button-create-account").addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("chocolate")
     onNavigate('/register')
   });
+
   return rootElement;
 };
+
 
 
 
