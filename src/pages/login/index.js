@@ -20,6 +20,14 @@ export const Login = () => {
     <div class="container-logo">
       <img class="logo" src="img/livro.png" <a href="https://www.flaticon.com/br/autor" alt="Logo">
     </div>
+    <footer>
+    <ul class="footer">
+      <a href="https://github.com/BiancaSherika" target="_blank"><strong>@ Bianca Sherika</strong></a>
+      <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardozo</strong></a>
+      <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@ Gabriela Silva</strong></a>
+      <a href="https://www.laboratoria.la/" target="_blank"><strong>by Laboratória</strong></a>
+    </ul>
+    </footer>
     `;
   
   rootElement.querySelector("#button-login").addEventListener("click", (e) => {

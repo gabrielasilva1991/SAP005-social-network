@@ -1,4 +1,6 @@
-import { Home, Posts, Profile, } from './pages/home/index.js';
+import { Home } from './pages/home/index.js';
+import { Posts } from './pages/posts/index.js';
+import { Profile } from './pages/profile/index.js';
 import { Login } from './pages/login/index.js';
 import { Register } from './pages/register/index.js';
 import { onNavigate } from './utils/history.js';
