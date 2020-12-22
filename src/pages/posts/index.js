@@ -1,17 +1,23 @@
+import { logOut } from '../../services/index.js';
 
 export const Posts = () => {
-  const postsCreated = document.createElement('div');
-  postsCreated.innerHTML = `
+  const rootElement = document.createElement('div');
+  rootElement.innerHTML = `
+    <header>
+      <button id='logout'>Sair</button>
+    </header>
     <h1>Postagem teste</h1>
+    <input id='newPost' placeholder='Escreva seu post'/>
 
-  `;
-  return postsCreated
+`;
+
+rootElement.querySelector("#logout").addEventListener("click", (e) => {
+  e.preventDefault();
+  return logOut();
+});
+
+  return rootElement;
 };
-
-
-
-
-
 
 //import { getPosts, createPost } from '../../services/index.js'
 
@@ -28,20 +34,14 @@ export const Posts = () => {
 //         <p>${post.message} </p>
 //       `;
 //     })
-  
-  
+
 //     rootElement.innerHTML = element
-    
 //   }
-  
 //   document.querySelector('button').addEventListener('click', () =>{
 //     createPost('Post')
 //     showPosts()
 //   })
   
-//   //showPosts()
-  
+//   //showPosts() 
 //   return rootElement;
-
-
 // }

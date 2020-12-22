@@ -44,24 +44,8 @@ export const Login = () => {
 
   rootElement.querySelector("#button-create-account").addEventListener('click', (e) => {
     e.preventDefault();
-    onNavigate('/register')
+    onNavigate('/register');
   });
 
   return rootElement;
 };
-
-
-
-
-
-
-//function loginConfig () {
-  //return {
-    //signInFlow: "popup",
-    //signInSucess: "#",
-    //signInOptions: [
-      //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      //firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    //]
-  //}
-//}
