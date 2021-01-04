@@ -25,3 +25,18 @@ window.addEventListener('load', () => {
   routeRender();
 });
 
+
+
+//deixar senha visível e invisivel
+
+document.getElementById("olho").addEventListener('mousedown', function() {
+  document.getElementById("my-password").type = "text";
+});
+
+document.getElementById("olho").addEventListener('mouseup', function() {
+  document.getElementById("my-password").type = "password";
+});
+
+document.getElementById("olho").addEventListener('mousemove', function() {
+  document.getElementById("my-password").type = "password";
+});

@@ -4,35 +4,40 @@ import { onNavigate } from '../../utils/history.js';
 export const Login = () => {
   const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-    <h1>A Menina que Trocava Livros</h1>
-    <form class="container-web">
-      <div class="items">
-        <input type="email" class="input-login" id="email" placeholder ="E-mail"/>
-        <input type="password" class="input-login" id="password" placeholder="Senha"/>
-      </div>
+    <div class="container"
       <div>
-        <button type="submit" class="button-login" id="button-login">Entrar</button>
-        <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
-        <button class="button-google" id="button-google"><i class="fa fa-google" aria-hidden="true"></i></button>
+        <form class="container-login">
+          <h1 class="title">A Menina que Trocava Livros</h1>              
+          <input type="email" class="input-login" id="e-mail" placeholder ="E-mail"/>
+
+          <input type="password" class="input-login" id="my-password" placeholder="Senha">
+          <img class="olho" id="olho" src="img/olho.png"/>
+
+          <button type="submit" class="button-login" id="button-login">Entrar</button>
+          <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
+          <button class="button-google" id="button-google"><img id="img-google" src="img/google.png" alt="img-google"></button>
+          <label class="google" >Entrar com o Google</label>
+          <script type="module" src="./register/index.js"></script>
+        </form>
+
+        <img class="container-logo" src="img/livro.png" <a href="https://www.flaticon.com/br/autor" alt="Logo">
+
       </div>
-      <script type="module" src="./register/index.js"></script>
-    </form>
-    <div class="container-logo">
-      <img class="logo" src="img/livro.png" <a href="https://www.flaticon.com/br/autor" alt="Logo">
     </div>
+
     <footer>
     <ul class="footer">
-      <a href="https://github.com/BiancaSherika" target="_blank"><strong>@ Bianca Sherika</strong></a>
-      <a href="https://github.com/ly-cardozo" target="_blank"><strong>@ Eliane Cardozo</strong></a>
-      <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@ Gabriela Silva</strong></a>
+      <a href="https://github.com/BiancaSherika" target="_blank"><strong>@Bianca Sherika</strong></a>
+      <a href="https://github.com/ly-cardozo" target="_blank"><strong>@Eliane Cardozo</strong></a>
+      <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@Gabriela Silva</strong></a>
       <a href="https://www.laboratoria.la/" target="_blank"><strong>by Laboratória</strong></a>
     </ul>
     </footer>
     `;
   
   rootElement.querySelector("#button-login").addEventListener("click", (e) => {
-    const email = rootElement.querySelector("#email").value;
-    const password = rootElement.querySelector("#password").value;
+    const email = rootElement.querySelector("#e-mail").value;
+    const password = rootElement.querySelector("#my-password").value;
     e.preventDefault();
     return signIn(email, password);
   });

@@ -1,5 +1,5 @@
 import { logOut } from '../../services/index.js';
-import { getPosts, createPost} from '../../services/index.js'
+//import { getPosts, createPost} from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
