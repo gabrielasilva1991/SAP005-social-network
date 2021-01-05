@@ -31,7 +31,7 @@
     margin-bottom: 15px;
 }
 
-.container-login input{
+.input-login{
     width: 200px;
     font-size: 90%;
     padding: 10px 5px 10px 5px;  /* superior | direita | inferior | esquerda */
@@ -39,7 +39,7 @@
     margin: 10px;   
 }
 
-.container-login button{
+.button-login{
     width: 100px;
     font-size: 90%;
     padding: 5px;
@@ -47,6 +47,25 @@
     margin: 10px;  
     border-radius: 20px 20px 20px 20px; 
     cursor: pointer;
+}
+
+.button-create-account{
+    width: 100px;
+    font-size: 90%;
+    padding: 5px;
+    border-style: groove;
+    margin: 10px;  
+    border-radius: 20px 20px 20px 20px; 
+    cursor: pointer;
+}
+
+.button-google {
+    font-size: 90%;
+    cursor: pointer;
+    border: 1px;
+    border-radius: 100px;  
+    width: 40px;
+    height: 40px;
 }
 
 .container-logo{

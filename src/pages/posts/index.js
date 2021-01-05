@@ -8,7 +8,7 @@ export const Posts = () => {
       <button id='logout'>Sair</button>
     </header>
     <h1>Postagem teste</h1>
-    <form>
+    <form action="" class="post" id="post">
       <textarea id='newPost' rows="5" cols="50" placeholder='Escreva sua publicação'></textarea>
       <button id='submit-post'>Publicar</button>
     </form>

@@ -11,8 +11,7 @@ export const Login = () => {
           <input type="email" class="input-login" id="e-mail" placeholder ="E-mail"/>
 
           <input type="password" class="input-login" id="my-password" placeholder="Senha">
-          <img class="olho" id="olho" src="img/olho.png"/>
-
+                    
           <button type="submit" class="button-login" id="button-login">Entrar</button>
           <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
           <button class="button-google" id="button-google"><img id="img-google" src="img/google.png" alt="img-google"></button>
@@ -54,3 +53,4 @@ export const Login = () => {
 
   return rootElement;
 };
+
