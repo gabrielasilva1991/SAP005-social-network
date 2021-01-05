@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    margin-top: 40px;
+    
+}
+
+.container-login{
+    display: flex;
+    flex-direction: column;    
+    text-align: center;
+    align-items: center;
+    border-color: rgb(19, 2, 2);
+    border-style: groove;
+    border-radius: 40px 40px 40px 40px; /*arredondamento dos cantos*/
+    padding: 40px;
+    margin-right: 80px;
+}
+
+.title{
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.input-login{
+    width: 200px;
+    font-size: 90%;
+    padding: 10px 5px 10px 5px;  /* superior | direita | inferior | esquerda */
+    border-style: groove;
+    margin: 10px;   
+}
+
+.button-login{
+    width: 100px;
+    font-size: 90%;
+    padding: 5px;
+    border-style: groove;
+    margin: 10px;  
+    border-radius: 20px 20px 20px 20px; 
+    cursor: pointer;
+}
+
+.button-create-account{
+    width: 100px;
+    font-size: 90%;
+    padding: 5px;
+    border-style: groove;
+    margin: 10px;  
+    border-radius: 20px 20px 20px 20px; 
+    cursor: pointer;
+}
+
+.button-google {
+    font-size: 90%;
+    cursor: pointer;
+    border: 1px;
+    border-radius: 100px;  
+    width: 40px;
+    height: 40px;
+}
+
+.container-logo{
+    width: 30%;
+    height: 30%;
+    margin-left: 80px;
+}
+
+.footer{
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right; 
+    margin-right: 200px;
+}
+
+.footer a:link{
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color:red;
+}
