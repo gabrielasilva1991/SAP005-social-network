@@ -9,9 +9,7 @@ export const Login = () => {
         <form class="container-login">
           <h1 class="title">A Menina que Trocava Livros</h1>              
           <input type="email" class="input-login" id="e-mail" placeholder ="E-mail"/>
-
-          <input type="password" class="input-login" id="my-password" placeholder="Senha">
-                    
+          <input type="password" class="input-login" id="my-password" placeholder="Senha"/>       
           <button type="submit" class="button-login" id="button-login">Entrar</button>
           <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
           <button class="button-google" id="button-google"><img id="img-google" src="img/google.png" alt="img-google"></button>

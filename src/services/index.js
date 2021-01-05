@@ -54,6 +54,34 @@ export const checkLogin = () => {
   });
 };
 
+export const creatPost = () => {
+  firebase.firestore().collection("posts").add({
+    user_id: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
+    text: '', // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
+    likes: [], // (array vazio de likes)
+    comments: [], // (array vazio de comentários)
+  });
+};
+
+export const loadingPost = () => {
+  firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
+  .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
+    snap.forEach(doc => {
+      // if (doc && doc.exists){
+      //   const myData = doc.data();
+      //   console.log("Vericar post recebido", doc);
+      //   outputHeader.innerText = " " + myData.text
+
+      // }
+      console.log(doc.data()) 
+    }); // (método forEach permite executar uma função para cada item de um array.)
+  });
+  loadingPost();  
+};
+
+
+
+
 
 //PÁGINA DE POSTS ISA
 
@@ -74,25 +102,8 @@ export const checkLogin = () => {
 //   })
 // }
 
+
 //FIREBASE FIRESTORE
-
-//export const creatPost = () => {
- // firebase.firestore().collection('post').add({
-//    user_id: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
- //   text: '', // (uau, aqui vai o texto, minha nossa!!!)
- //   likes: [], // (array vazio de likes)
-  //  comments: [], // (array vazio de comentários)
- //});
-//};
-
-//export const getPosts = () => {
-  //firebase.firestore().collection('post').get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
- // .then((snap) => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
- //   snap.forEach(doc => {
- //     console.log(doc.data())
- //   }); // (método forEach permite executar uma função para cada item de um array.)
- // });
-//};
 
 // export const savePost = () => {
 //   firebase.firestore().collection('post').add({
