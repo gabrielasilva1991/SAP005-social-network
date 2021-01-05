@@ -1,5 +1,5 @@
 import { logOut } from '../../services/index.js';
-import { creatPost, loadingPost} from '../../services/index.js'
+import { creatPost, loadingPost, showPosts } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
@@ -11,8 +11,10 @@ export const Posts = () => {
     <form action="" class="form-post" id="form-post">
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
-      <textarea id="post-creat" rows="5" cols="50" ></textarea>
+
     </form>
+
+    <textarea id="post-creat" rows="5" cols="50" ></textarea>
   `;
 
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
@@ -21,21 +23,17 @@ export const Posts = () => {
   });
 
 
-
-  rootElement.querySelector("#form-post").addEventListener("submit", (e) => {
+  rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
-    document.querySelector("#new-post").value;
-    return creatPost()  
-  });
+    const postInicial = rootElement.querySelector("#new-post").value;
+    creatPost(postInicial)  
+    const showPost = loadingPost()
+    rootElement.querySelector("#post-creat").innerHTML += showPost;
 
-  rootElement.querySelector("#post-creat").addEventListener("submit", (e) => {
-    e.preventDefault();
-    return loadingPost()  
   });
 
   return rootElement;
 };
-
 
 
 
@@ -55,7 +53,10 @@ export const Posts = () => {
 // };
 
 
+
 // ${Button({type="button", class="publish", title="Publicar", onclick=savePost})}
+
+
 
 
 // rootElement.querySelector("#form-post").addEventListener("submit", (e) => {

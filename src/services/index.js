@@ -54,31 +54,40 @@ export const checkLogin = () => {
   });
 };
 
-export const creatPost = () => {
+export const creatPost = (postInicial) => {
   firebase.firestore().collection("posts").add({
     user_id: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
-    text: '', // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
+    text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
     likes: [], // (array vazio de likes)
     comments: [], // (array vazio de comentários)
   });
 };
 
+
 export const loadingPost = () => {
   firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
   .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
     snap.forEach(doc => {
-      // if (doc && doc.exists){
-      //   const myData = doc.data();
-      //   console.log("Vericar post recebido", doc);
-      //   outputHeader.innerText = " " + myData.text
-
-      // }
-      console.log(doc.data()) 
-    }); // (método forEach permite executar uma função para cada item de um array.)
-  });
-  loadingPost();  
+     const id = doc.id
+     const userId = doc.data().user_id
+     const text = doc.data().text
+     const likes = doc.data().likes
+     const comments = doc.data().comments
+     return showPosts(id, userId, text, likes, comments)    
+    });
+  })
 };
 
+export const showPosts = (id, userId, text, likes, comments) => {
+  //console.log(id, userId, text, likes, comments )
+  const posts = `
+    <p id="${id}>
+      ${text} ${userId} ❤️${likes} ${comments}
+    </p>
+  `
+  return posts;
+  
+}
 
 
 
