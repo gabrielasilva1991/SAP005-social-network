@@ -23,12 +23,16 @@ export const Posts = () => {
   });
 
 
-  rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
+  rootElement.querySelector("#submit-post").addEventListener("click", async(e) => {
     e.preventDefault();
-    const postInicial = rootElement.querySelector("#new-post").value;
-    creatPost(postInicial)  
-    const showPost = loadingPost()
-    rootElement.querySelector("#post-creat").innerHTML += showPost;
+    const postInitial = rootElement.querySelector("#new-post").value;
+    creatPost(postInitial)  
+    const posts = await loadingPost()
+    console.log("oi")
+    const htmlPosts = showPosts(posts)
+    console.log("xau")
+    console.log(htmlPosts)
+    rootElement.querySelector("#post-creat").innerHTML += htmlPosts;
 
   });
 
