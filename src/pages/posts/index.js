@@ -1,5 +1,5 @@
-import { logOut } from '../../services/index.js';
-import { creatPost, loadingPost, showPosts } from '../../services/index.js'
+import { logOut, showPosts } from '../../services/index.js';
+import { creatPost, loadingPost } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
@@ -20,21 +20,26 @@ export const Posts = () => {
     e.preventDefault();
     return logOut();
   });
-
-  // rootElement.querySelector("#user-name").innerHTML = `${user.displayName}`
-  //   checkLogin();
-  // };
-
+  
   rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
     const postInitial = rootElement.querySelector("#new-post").value;
     creatPost(postInitial)  
-    const postReturn = rootElement.querySelector("#post-creat").innerHTML = postInitial;
-    loadingPost(postReturn)
-    const showPost = rootElement.querySelector("#post-creat").innerHTML = postReturn;
-    showPosts(showPost)
+    loadingPost().then(results => {
+      document.querySelector("#post-creat").innerHTML= "";
+      console.log(results)
+      results.docs.map(doc => {
+        showPosts({      
+          id: doc.id,
+          userId: doc.data().userId,
+          text: doc.data().text,
+          likes: doc.data().likes,
+          comments: doc.data().comments,
+        });
+      });   
+    });  
+    console.log(loadingPost) 
   });
-
   return rootElement;
 };
 
@@ -53,36 +58,3 @@ export const Posts = () => {
 //   rootElement.innerHTML = element
 //   showPosts() 
 // };
-
-
-// ${Button({type="button", class="publish", title="Publicar", onclick=savePost})}
-
-//DANIEL
-
-// rootElement.querySelector("#form-post").addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   document.querySelector("#new-post").value;  
-//   const post = {
-//     user_id: "Gabi", //(identifica o usuário que está logado)
-//     text: 'text', // (uau, aqui vai o texto, minha nossa!!!)
-//     likes: 0, // (array vazio de likes)
-//     comments: [], // (array vazio de comentários)
-//   }
-
-//   const postsCollection = firebase.firestore().collection("posts");
-
-//   postsCollection.add(post)
-
-// });
-
-// function loadingPosts() {
-//   const postsCollection = firebase.firestore().collection("posts");
-//   postsCollection.get().then(mensagem => {
-//     mensagem.forEach(doc => {
-//       console.log(doc.data())        
-//     });
-//   })
-// }
-// loadingPosts();
-
-// return rootElement;
