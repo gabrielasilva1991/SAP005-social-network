@@ -1,5 +1,5 @@
 import { logOut } from '../../services/index.js';
-import { creatPost, loadingPost} from '../../services/index.js'
+import { creatPost, loadingPost, showPosts } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
@@ -7,12 +7,13 @@ export const Posts = () => {
     <header>
       <button id='logout'>Sair</button>
     </header>
-    <h1>Postagem teste</h1>
+    <h1 class="user-name" id="user-name">Postagens</h1>
     <form action="" class="form-post" id="form-post">
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
-      <textarea id="post-creat" rows="5" cols="50" ></textarea>
     </form>
+
+    <div id="post-creat" ></div>
   `;
 
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
@@ -20,23 +21,22 @@ export const Posts = () => {
     return logOut();
   });
 
+  // rootElement.querySelector("#user-name").innerHTML = `${user.displayName}`
+  //   checkLogin();
+  // };
 
-
-  rootElement.querySelector("#form-post").addEventListener("submit", (e) => {
+  rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
-    document.querySelector("#new-post").value;
-    return creatPost()  
-  });
-
-  rootElement.querySelector("#post-creat").addEventListener("submit", (e) => {
-    e.preventDefault();
-    return loadingPost()  
+    const postInitial = rootElement.querySelector("#new-post").value;
+    creatPost(postInitial)  
+    const postReturn = rootElement.querySelector("#post-creat").innerHTML = postInitial;
+    loadingPost(postReturn)
+    const showPost = rootElement.querySelector("#post-creat").innerHTML = postReturn;
+    showPosts(showPost)
   });
 
   return rootElement;
 };
-
-
 
 
 // const showPosts = () => {
@@ -57,6 +57,7 @@ export const Posts = () => {
 
 // ${Button({type="button", class="publish", title="Publicar", onclick=savePost})}
 
+//DANIEL
 
 // rootElement.querySelector("#form-post").addEventListener("submit", (e) => {
 //   e.preventDefault();

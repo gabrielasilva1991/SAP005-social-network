@@ -1,4 +1,5 @@
 import { onNavigate } from '../../utils/history.js';
+
 //PÁGINA DE LOGIN
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -54,33 +55,37 @@ export const checkLogin = () => {
   });
 };
 
-export const creatPost = () => {
+//PÁGINA DE POSTS
+export const creatPost = (postInicial) => {
   firebase.firestore().collection("posts").add({
-    user_id: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
-    text: '', // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
+    userId: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
+    text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
     likes: [], // (array vazio de likes)
     comments: [], // (array vazio de comentários)
   });
 };
 
 export const loadingPost = () => {
+  let postsArray = []
   firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
   .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
     snap.forEach(doc => {
-      // if (doc && doc.exists){
-      //   const myData = doc.data();
-      //   console.log("Vericar post recebido", doc);
-      //   outputHeader.innerText = " " + myData.text
-
-      // }
-      console.log(doc.data()) 
-    }); // (método forEach permite executar uma função para cada item de um array.)
-  });
-  loadingPost();  
+      showPosts(doc.data(), doc.id)
+      console.log(doc.data().text)
+      //console.log(doc.id)
+    });
+  })
+  return postsArray;
 };
 
-
-
+export const showPosts = () => {
+  const postsTemplates = `
+    <div>
+      <p>${posts.data} </p>
+    </div>
+  `
+  return postsTemplates
+};
 
 
 //PÁGINA DE POSTS ISA
