@@ -1,4 +1,5 @@
 import { onNavigate } from '../../utils/history.js';
+
 //PÁGINA DE LOGIN
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -54,97 +55,37 @@ export const checkLogin = () => {
   });
 };
 
-export const creatPost = (postInitial) => {
+//PÁGINA DE POSTS
+export const creatPost = (postInicial) => {
   firebase.firestore().collection("posts").add({
     userId: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
-    text: `${postInitial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
+    text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
     likes: [], // (array vazio de likes)
     comments: [], // (array vazio de comentários)
   });
 };
 
-
-// export const loadingPost = () => {
-//   firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
-//   .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
-//     snap.forEach(doc => {
-//      //console.log(doc)
-//      const id = doc.id
-//      const userId = doc.data().userId
-//      const text = doc.data().text
-//      const likes = doc.data().likes
-//      const comments = doc.data().comments
-//      //const postLoading = doc.data()
-//      //return showPosts(id, userId, text, likes, comments)
-//      const test = showPosts(id, userId, text, likes, comments)    
-//      console.log(test)  
-//     });
-//   })
-// };
-
 export const loadingPost = () => {
-  const postsA = [];
-  firebase.firestore().collection("posts")
-  .onSnapshot(snap => { 
+  let postsArray = []
+  firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
+  .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
     snap.forEach(doc => {
-      const id = doc.id
-      const userId = doc.data().userId
-      const text = doc.data().text
-      const likes = doc.data().likes
-      const comments = doc.data().comments
-      const postUnic = {id, userId, text, likes, comments}
-      postsA.push(postUnic)
-      //console.log("Current data: ", doc.data());
-      //const test = showPosts(id, userId, text, likes, comments)
-      //console.log(test)
+      showPosts(doc.data(), doc.id)
+      console.log(doc.data().text)
+      //console.log(doc.id)
     });
-    return postsA
-  });
-  return postsA
-}
+  })
+  return postsArray;
+};
 
-export const showPosts = (posts) => {
-  console.log(posts)
-  const postReturn = "";
-  posts.map(post => {
-    console.log(post)
-    postReturn += `
-    <p id="${post.id} ></p>
-    <p ${post.userId} ></p>
-    <p ${post.text} ></p>   
-    <p ❤️${post.likes} ></p>
-    <p ${post.comments} ></p>
+export const showPosts = () => {
+  const postsTemplates = `
+    <div>
+      <p>${posts.data} </p>
+    </div>
   `
-  console.log(postReturn)
-  return postReturn
-  })
-  
-  // const postIndividual = `
-  //  <p id="${id} ></p>
-  //  <p ${userId} ></p>
-  //  <p ${text} ></p>   
-  //  <p ❤️${likes} ></p>
-  //  <p ${comments} ></p>
-    
-  // `
-  //return posts;
-  
-}
-
-export const deletePost = () => {
-  firebase.firestore().collection("posts")
-  .then(doc => {
-    doc.delete()
-    console.log("Post excluido com sucesso!");
-  }).catch((error) => {
-    console.error("Erro ao remover post", error);
-  })
-  loadingPost()
-}
-
-
-
-
+  return postsTemplates
+};
 
 
 //PÁGINA DE POSTS ISA
