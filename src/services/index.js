@@ -66,25 +66,17 @@ export const creatPost = (postInicial) => {
 };
 
 export const loadingPost = () => {
-  let postsArray = []
-  firebase.firestore().collection("posts").get() // (eu tenho uma coleção. get= vai lá no banco de dados e me trás esses dados)
-  .then(snap => { // (quando os dados chegarem, serão jogados na variavel snap e me retornar uma função)
-    snap.forEach(doc => {
-      showPosts(doc.data(), doc.id)
-      console.log(doc.data().text)
-      //console.log(doc.id)
-    });
-  })
-  return postsArray;
+  return firebase.firestore().collection("posts").get()
 };
 
-export const showPosts = () => {
+export const showPosts = (posts) => {
   const postsTemplates = `
     <div>
-      <p>${posts.data} </p>
+      <p>${posts.text}</p>
     </div>
   `
-  return postsTemplates
+  const postCreat = document.querySelector("#post-creat")
+  postCreat.innerHTML += postsTemplates; 
 };
 
 
@@ -106,15 +98,3 @@ export const showPosts = () => {
 //     message: `${post} ${posts.length + 1}`
 //   })
 // }
-
-
-//FIREBASE FIRESTORE
-
-// export const savePost = () => {
-//   firebase.firestore().collection('post').add({
-//     user_id: firebase.auth().currentUser.id,
-//     text: ''.value, 
-//     likes: [], 
-//     comments: [],
-//   });
-// };
