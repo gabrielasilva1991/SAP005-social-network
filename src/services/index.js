@@ -54,31 +54,29 @@ export const checkLogin = () => {
     }
   });
 };
-
+ 
 //PÁGINA DE POSTS
 export const creatPost = (postInicial) => {
   firebase.firestore().collection("posts").add({
-    userId: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
+    //userId: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
     text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
-    likes: [], // (array vazio de likes)
+    likes: Number([]), // (array vazio de likes)
     comments: [], // (array vazio de comentários)
+    //date: new date(),
   });
 };
 
 export const loadingPost = () => {
   return firebase.firestore().collection("posts").get()
+  //.orderBy("date", "desc")
 };
 
-export const showPosts = (posts) => {
-  const postsTemplates = `
-    <div>
-      <p>${posts.text}</p>
-    </div>
-  `
-  const postCreat = document.querySelector("#post-creat")
-  postCreat.innerHTML += postsTemplates; 
-};
-
+export const likePost = (id) => {
+  let postLike = firebase.firestore().collection("post").doc(id);
+  postLike.update({
+    likes: firebase.firestore.FieldValue.increment(1)
+  })
+}
 
 //PÁGINA DE POSTS ISA
 
