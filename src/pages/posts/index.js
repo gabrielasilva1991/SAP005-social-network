@@ -11,44 +11,49 @@ export const Posts = () => {
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
     </form>
-
     <div id="post-creat"></div>
-
   `;
 
-  const postCreat = rootElement.querySelector("#new-post");
-  const btnLogout = rootElement.querySelector("#logout");
-  const btnPost = rootElement.querySelector("#submit-post");
+  // const postCreat = rootElement.querySelector("#new-post");
+  // const btnLogout = rootElement.querySelector("#logout");
+  // const btnPost = rootElement.querySelector("#submit-post");
     
-  btnLogout.addEventListener("click", (e) => {
+  rootElement.querySelector("#logout").addEventListener("click", (e) => {
     e.preventDefault();
     return logOut();
   });
 
-  
-  const loadPost = () => {
+  const loadPost = (postList) => {
     loadingPost().then(results => {
-      document.querySelector("#post-creat").innerHTML= "";
-      results.docs.map(doc => {
+      let cardPost = document.querySelector("#post-creat")
+      cardPost.innerHTML= "";
+      
+      const div = document.createElement("div")
+      div.classList.add("post-creat")
+      
+      results.forEach(doc => {
         showPosts({
           //date: doc.data().date.toDate().toLocaleString('pt-BR'),
           postId: doc.id,
-          name: doc.data().name,
+          userName: doc.data().userName,
           userEmail: doc.data().userEmail,
           text: doc.data().text,
           likes: doc.data().likes,
-          comments: doc.data().comments,
+          //comments: doc.data().comments,
           date: doc.data().date,
           //time: data.getTime(),
           //dataString: `${data.toLocaleDateString()} ${data.getHours()}:${data.getMinutes()}`,
         });
       });
+
+      //cardPost.appendChild(div)
     });
+
   };
 
-  postCreat.onload = loadPost();
+  rootElement.querySelector("#new-post").onload = loadPost();
 
-  btnPost.addEventListener("click", (e) => {
+  rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
     const postInitial = rootElement.querySelector("#new-post").value;
     creatPost(postInitial)
@@ -66,8 +71,12 @@ const showPosts = (posts) => {
 
   const postsTemplates = `
     <div id="${posts.id}">
+      <p>${posts.userName}</p>
+      p>${posts.date}</p>
       <p>${posts.text}</p>
       <p>${posts.likes}</p>
+      <p>${posts.date}</p>
+
       <button class="likes" id="likes">Curtir</button>
       <button class="edit" id="edit">Editar</button>
       <button class="delete" id="delete" div-id=${posts.id}>Deletar</button>
@@ -94,6 +103,11 @@ const showPosts = (posts) => {
   //     onNavigate('/posts')
   //   });
   // }) 
+
+  // const deleteEvent = (postBox, code) => {
+  //   const deleteBtn = postBox.querySelector(`button[data-id="${code}"]`);
+  //   deleteBtn.addEventListener('click', () => deletePost(code));
+  // };
 
   postCreat.querySelectorAll("#delete").forEach((e)=> {
     e.addEventListener("click", (e) => {

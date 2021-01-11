@@ -12,16 +12,15 @@ export const Register = () => {
     </form>
   `;
   
-  const btnRegister = rootElement.querySelector("#button-register")
-  
-  btnRegister.addEventListener("click", (e) => {
-    const name = rootElement.querySelector("#name").value;
+    //const userName = rootElement.querySelector("#name").value;
+    
+
+  rootElement.querySelector("#button-register").addEventListener("click", (e) => {
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
     e.preventDefault();
-    console.log(name, email, password)
     return registerUser(email, password);
   });
-
+  
   return rootElement;
 };

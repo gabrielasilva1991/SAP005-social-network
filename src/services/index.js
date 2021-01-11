@@ -8,7 +8,7 @@ export const loginWithGoogle = () => {
     const user = firebase.auth().currentUser
     checkLogin(user)
     //alert('Login realizado com sucesso')
-    //alert (`Olá ${firebase.auth().currentUser.displayName}`)
+    alert (`Olá ${firebase.auth().currentUser.displayName}`)
   })
   .catch(() => {
     alert('Você não conectou com o Google, tente novamente')
@@ -17,10 +17,16 @@ export const loginWithGoogle = () => {
 
 export const registerUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
+  // firebase.auth().createUserWithEmailAndPassword(email, password).then((name) => {
+  //   name.user.update({
+  //     displayName: userName
+  //   })
+  // })
   .then(() => {
     const user = firebase.auth().currentUser
     checkLogin(user)
     alert('Conta criada com sucesso')
+    alert(`Olá, ${document.querySelector("#name").value}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
   })
   .catch(() => {
     alert('Falha ao realizar o cadastro')
@@ -30,10 +36,10 @@ export const registerUser = (email, password) => {
 export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(() => {
-    const user = firebase.auth().currentUser
+    const user = firebase.auth().currentUser //`${}`
     checkLogin(user)
-    //alert('Login realizado com sucesso')
-    //alert (`Olá ${firebase.auth().currentUser.displayName}`)
+    alert('Login realizado com sucesso')
+    alert (`Olá ${firebase.auth().currentUser.displayName}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
   })
   .catch(() => {
     alert('Email e/ou senha incorretos')
@@ -65,7 +71,8 @@ export const creatPost = (postInicial) => {
     userEmail: `${firebase.auth().currentUser.email}`, //identifica o usuário que está logado
     text: postInicial, // aqui vai o texto
     likes: [], 
-    comments: [], // (array vazio de comentários)
+    //comments: [], // (array vazio de comentários)
+    //date: new date(),
     //date: date.toLocaleString(),
     //time: date.getTime(),
   });
@@ -85,19 +92,17 @@ export const loadingPost = () => {
 // };
 
 
-// export const likePost = () => {
-//   return firebase.firestore().collection("post").doc(id) 
-// };
-
 export const likePost = (id) => {
-  firebase.firestore().collection("posts").doc(id).update({
+  return firebase.firestore().collection("posts").doc(id).update({
     likes: firebase.firestore.FieldValue.increment(1) 
     //aumenta valor numérico, úteis para implementar contadores
   })
-}
+};
+
+
 
 export const deletePost = (postId) => {
- firebase.firestore().collection("posts").doc(postId).delete()
+ return firebase.firestore().collection("posts").doc(postId).delete()
 };
 
 
