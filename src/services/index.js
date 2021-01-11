@@ -60,40 +60,39 @@ export const checkLogin = () => {
 };
  
 //PÁGINA DE POSTS
-export const creatPost = (postInicial, likesStored) => {
+export const creatPost = (postInicial) => {
+  // const x = firebase.auth().currentUser
+  // console.log(x)
   firebase.firestore().collection("posts").add({
-    userName: `${firebase.auth().currentUser.displayName}`,
-    userEmail: `${firebase.auth().currentUser.email}`, //(identifica o usuário que está logado)
+    userName: firebase.auth().currentUser.displayName,
+    userEmail: firebase.auth().currentUser.email, //(identifica o usuário que está logado)
     text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
-    likes: `${likesStored}`, // (array vazio de likes)
+    likes: 0,
+    date: new Date().toLocaleString(),
     // comments: [], // (array vazio de comentários)
-    //date: new date(),
-    //date: date.toLocaleString(),
-    //time: date.getTime(),
   });
 };
 
-export const loadingPost = (postList) => {
-  return firebase.firestore().collection("posts").get()
-  //.orderBy("date", "desc")
+export const loadingPost = () => {
+  return firebase.firestore().collection("posts").orderBy("date", "desc").get()
 };
 
-// export const likePost = (postId) => {
-//   return firebase.firestore().collection("posts").doc(postId).update({
-//     likes: firebase.firestore.FieldValue.increment(1) 
-//     //aumenta valor numérico, úteis para implementar contadores
-//   });
-// };
+export const likePost = (postId) => {
+  return firebase.firestore().collection("posts").doc(postId).update({
+    likes: firebase.firestore.FieldValue.increment(1) 
+    //aumenta valor numérico, úteis para implementar contadores
+  });
+};
+
+export const deletePost = (postId) => {
+  return firebase.firestore().collection("posts").doc(postId).delete()
+};
 
 // export const editPost = (postId) => {
 //   return firebase.firestore().collection("posts").doc(postId).update({
 //     text: textArea.value
 //   });
 // };
-
-export const deletePost = (postId) => {
-  return firebase.firestore().collection("posts").doc(postId).delete()
-};
 
 //export const commentsPosts = (postId) => {
   //return firebase.firestore().collection("posts").doc(postId) 
