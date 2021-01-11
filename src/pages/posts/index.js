@@ -1,5 +1,4 @@
-import { logOut, showPosts } from '../../services/index.js';
-import { creatPost, loadingPost } from '../../services/index.js'
+import { logOut, creatPost, loadingPost, likePost, deletePost } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
@@ -12,37 +11,126 @@ export const Posts = () => {
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
     </form>
-
-    <div id="post-creat" ></div>
+    <div id="post-creat"></div>
   `;
 
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
     e.preventDefault();
     return logOut();
   });
-  
+
+  const loadPost = () => {
+    loadingPost().then(results => {
+      // let cardPost = document.querySelector("#post-creat")
+      // cardPost.innerHTML= "";
+      
+      // const div = document.createElement("div")
+      // div.classList.add("post-creat")
+      document.querySelector("#post-creat").innerHTML= "",
+      
+      results.forEach(doc => {
+        showPosts({
+          postId: doc.id,
+          userName: doc.data().userName,
+          userEmail: doc.data().userEmail,
+          text: doc.data().text,
+          likes: doc.data().likes,
+          date: doc.data().date,
+          // comments: doc.data().comments,
+        });
+      });
+
+      //cardPost.appendChild(div)
+    });
+  };
+
+  rootElement.querySelector("#new-post").onload = loadPost();
+
   rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
     const postInitial = rootElement.querySelector("#new-post").value;
-    creatPost(postInitial)  
-    loadingPost().then(results => {
-      document.querySelector("#post-creat").innerHTML= "";
-      console.log(results)
-      results.docs.map(doc => {
-        showPosts({      
-          id: doc.id,
-          userId: doc.data().userId,
-          text: doc.data().text,
-          likes: doc.data().likes,
-          comments: doc.data().comments,
-        });
-      });   
-    });  
-    console.log(loadingPost) 
+    creatPost(postInitial)
+    document.querySelector("#post-creat").innerHTML= "Carregando..."
+    loadPost()
   });
+    
   return rootElement;
 };
 
+const showPosts = (posts) => {
+
+  const postCreat = document.querySelector("#post-creat")
+  
+
+  const postsTemplates = `
+    <div class="pos-individual" id="${posts.postId}">
+      <p>${posts.userName}</p>
+      <p>${posts.date}</p>
+      <p>${posts.text}</p>
+      <p>${posts.likes}</p>
+      
+
+      <button class="like" data-like="${posts.postId}">Curtir</button>
+      <button class="edit" data-edit="${posts.postId}">Editar</button>
+      <button class="delete" data-id="${posts.postId}">Deletar</button>
+    </div>
+  `
+  postCreat.innerHTML += postsTemplates; 
+
+
+  postCreat.querySelectorAll(".like").forEach((e)=> {
+    e.addEventListener("click", (e) => {
+      e.target.parentNode.querySelector(".like"); 
+      likePost(posts.postId)
+      loadingPost()
+    });
+  })
+
+  postCreat.querySelectorAll(".delete").forEach((e)=> {
+    e.addEventListener("click", (e) => {
+      e.target.parentNode.querySelector(".delete"); 
+      //e.target.parentNode.querySelector("#delete") 
+      //parent aplica para todos os delete da pagina
+      deletePost(posts.postId)
+      loadingPost()
+    });
+  })
+
+  // postCreat.querySelector(".edit").forEach((e) => {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.dataset.id.querySelector(".edit");
+  //     editPost(posts.postId)
+  //     loadingPost()
+  //   });
+  // })
+};
+
+
+ 
+//MODELO EX ALUNA
+
+// feedArea.addEventListener('click', (event) => {
+//   const closestEditar = event.target.closest(btnEditar);
+//   if (closestEditar && feedArea.contains(closestEditar)) {
+//     const closestTextarea = closestEditar.parentNode.querySelector('.editar-post');
+//     closestTextarea.style.display = 'block';
+//     const closestBtnSalvarEdicao = closestEditar.parentNode.querySelector('.btn-salvar-editado');
+//     closestBtnSalvarEdicao.style.display = 'block';
+
+//     closestBtnSalvarEdicao.addEventListener('click', () => {
+//       closestTextarea.style.display = 'none';
+//       closestBtnSalvarEdicao.style.display = 'none';
+//       const closestPost = closestEditar.parentNode.querySelector('.texto-post');
+//       const postFinal = closestTextarea.value;
+//       closestPost.innerHTML = postFinal;
+//       const closestId = closestEditar.parentNode.querySelector('.id-escondido').innerText;
+
+
+
+
+
+
+ 
 
 // const showPosts = () => {
 //   const rootElement = document.createElement('div');
