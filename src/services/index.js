@@ -15,18 +15,15 @@ export const loginWithGoogle = () => {
   });
 };
 
-export const registerUser = (email, password) => {
+export const registerUser = (email, password, userRegister) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
-  // firebase.auth().createUserWithEmailAndPassword(email, password).then((name) => {
-  //   name.user.update({
-  //     displayName: userName
-  //   })
-  // })
-  .then(() => {
-    const user = firebase.auth().currentUser
+  .then((user) => {
+    const userName = `${userRegister}`
+    user.user.updateProfile({ displayName: userName })
+
     checkLogin(user)
     alert('Conta criada com sucesso')
-    alert(`Olá, ${document.querySelector("#name").value}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
+    alert(`Olá, ${document.querySelector("#userRegister").value}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
   })
   .catch(() => {
     alert('Falha ao realizar o cadastro')
@@ -65,46 +62,67 @@ export const checkLogin = () => {
 };
 
 //PÁGINA DE POSTS
-export const creatPost = (postInicial) => {
+export const creatPost = (postInitial) => {
+  // const x = firebase.auth().currentUser
+  // console.log(x)
   firebase.firestore().collection("posts").add({
     userName: `${firebase.auth().currentUser.displayName}`,
     userEmail: `${firebase.auth().currentUser.email}`, //identifica o usuário que está logado
-    text: postInicial, // aqui vai o texto
-    likes: [], 
+    text: postInitial, // aqui vai o texto
+    likes: 0,
     //comments: [], // (array vazio de comentários)
-    //date: new date(),
-    //date: date.toLocaleString(),
-    //time: date.getTime(),
+    date: new Date().toLocaleString(),
   });
 };
 
-export const loadingPost = () => {
-  return firebase.firestore().collection("posts").get()
-}
 
-// export const loadingPost = () => {
-//   const getPosts = firebase
-//   .firestore().collection("posts").orderBy("date", "desc")
-//   return getPosts.get()
+export const getPost = (showPosts) => {
+  return firebase.firestore().collection("posts").orderBy("date", "desc").get()
+  .then(results => {
+    results.forEach(doc => {
+      showPosts({
+        postId: doc.id,
+        userName: doc.data().userName,
+        userEmail: doc.data().userEmail,
+        text: doc.data().text,
+        likes: doc.data().likes,
+        date: doc.data().date,
+        // comments: doc.data().comments,
+      });
+    });
+  })
+};
 
-//   //.orderBy("time", "desc")
-//   //orderBy especificar a ordem de classificação dos dados
-// };
-
-
-export const likePost = (id) => {
-  return firebase.firestore().collection("posts").doc(id).update({
+export const likePost = (postsId) => {
+  return firebase.firestore().collection("posts").doc(postsId).update({
     likes: firebase.firestore.FieldValue.increment(1) 
     //aumenta valor numérico, úteis para implementar contadores
   })
 };
 
 
+// const firestore = firebase.firestore();
+// const collection = firestore.collection('posts');
+
+// export const likePost = () => {
+//   return collection.add({
+//     liked: true, //firebase.firestore.FieldValue.increment(1)
+//   })
+//   .then(() => {
+//     console.log("Deu certo")
+//     return Promise.resolve(true);
+//   })
+//   .catch((error) => {
+//     console.log("Deu ruim")
+//     return Promise.reject(error);
+//   })
+// }
+
+
 
 export const deletePost = (postId) => {
  return firebase.firestore().collection("posts").doc(postId).delete()
 };
-
 
 
 //PÁGINA DE POSTS ISA
@@ -125,6 +143,7 @@ export const deletePost = (postId) => {
 //     message: `${post} ${posts.length + 1}`
 //   })
 // }
+
 
 //var updateTimestamp = docRef.update({
   //timestamp: firebase.firestore.FieldValue.serverTimestamp()

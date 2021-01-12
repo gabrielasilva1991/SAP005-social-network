@@ -5,7 +5,7 @@ export const Register = () => {
   rootElement.innerHTML = `
     <h1>Crie sua conta</h1>
     <form>
-      <input type="name" class="input-register" id="name" placeholder="Nome"/>
+      <input type="name" class="input-register" id="userRegister" placeholder="Nome"/>
       <input type="email" class="input-register" id ="email" placeholder ="E-mail"/>
       <input type="password" class="input-register" id="password" placeholder="Senha"/>
       <button type="submit" class="button-register" id="button-register">Registrar-se</button>
