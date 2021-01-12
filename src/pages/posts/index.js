@@ -1,19 +1,27 @@
+<<<<<<< HEAD
 import { logOut, creatPost, loadingPost, likePost, deletePost } from '../../services/index.js'
+=======
+import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js';
+>>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
 
 export const Posts = () => {
-  const rootElement = document.createElement('div');
+  const rootElement = document.createElement("div");
   rootElement.innerHTML = `
     <header>
-      <button id='logout'>Sair</button>
+      <button id="logout">Sair</button>
     </header>
     <h1 class="user-name" id="user-name">Postagens</h1>
     <form action="" class="form-post" id="form-post">
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
     </form>
+<<<<<<< HEAD
 
     <div id="post-creat"></div>
 
+=======
+    <div id="container-post"></div>
+>>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
   `;
 
   const postCreat = rootElement.querySelector("#new-post");
@@ -25,6 +33,7 @@ export const Posts = () => {
     return logOut();
   });
 
+<<<<<<< HEAD
   
   const loadPost = () => {
     loadingPost().then(results => {
@@ -54,11 +63,24 @@ export const Posts = () => {
     creatPost(postInitial)
     document.querySelector("#post-creat").innerHTML= "Carregando..."
     loadPost()
+=======
+  const newPost = rootElement.querySelector("#new-post")
+  newPost.onload = getPost(showPosts);
+
+  rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
+    e.preventDefault();
+    const postCreat = rootElement.querySelector("#new-post").value;
+    creatPost(postCreat)
+    getPost(showPosts)
+    newPost.value = ""
+    rootElement.querySelector("#container-post").innerHTML= "";
+>>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
   });
     
   return rootElement;
 };
 
+<<<<<<< HEAD
 const showPosts = (posts) => {
 
   const postCreat = document.querySelector("#post-creat")
@@ -107,18 +129,41 @@ const showPosts = (posts) => {
 
 
 
+=======
+const showPosts = (posts) => { 
+  const postCreat = document.querySelector("#container-post")
+  
+  postCreat.innerHTML += `
+    <div class="post-individual" id="${posts.postId}">
 
-// const showPosts = () => {
-//   const rootElement = document.createElement('div');
-//   const posts = getPosts()
-//   let element = ''
+      <div class="post-text">
+        <p id="show-text">${posts.text}</p>
+        <p id="show-name">${posts.userName} </p>
+        <p id="show-date">${posts.date} </p> 
+        <p id="show-like">${posts.likes}</p>
+      </div>
+>>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
 
-//   posts.map(post => {
-//     element += `
-//       <p>${post.message} </p>
-//     `;
-//   });
+      <div class="post-edit"></div>
+      
+      <div class="button">
+        <button class="like" data-like="${posts.postId}">Curtir</button>
+        <button class="edit" data-edit="${posts.postId}">Editar</button>
+        <button class="delete" data-id="${posts.postId}">Deletar</button>
+      </div>
 
-//   rootElement.innerHTML = element
-//   showPosts() 
-// };
+    </div>  
+  `;
+
+  postCreat.querySelectorAll(".like").forEach((e)=> {
+    e.addEventListener("click", (e) => { 
+      likePost(e.target.dataset.like)
+    });
+  });
+
+  postCreat.querySelectorAll(".delete").forEach((e)=> {
+    e.addEventListener("click", (e) => {
+      deletePost(e.target.dataset.id) 
+    });
+  });
+};

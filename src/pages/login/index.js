@@ -2,7 +2,7 @@ import { loginWithGoogle, signIn } from '../../services/index.js';
 import { onNavigate } from '../../utils/history.js';
 
 export const Login = () => {
-  const rootElement = document.createElement('div');
+  const rootElement = document.createElement("div");
   rootElement.innerHTML = `
     <div class="container"
       <div>
@@ -44,9 +44,9 @@ export const Login = () => {
     return loginWithGoogle();
   });
 
-  rootElement.querySelector("#button-create-account").addEventListener('click', (e) => {
+  rootElement.querySelector("#button-create-account").addEventListener("click", (e) => {
     e.preventDefault();
-    onNavigate('/register');
+    onNavigate("/register");
   });
 
   return rootElement;
