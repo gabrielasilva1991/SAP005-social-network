@@ -15,11 +15,11 @@ export const loginWithGoogle = () => {
   });
 };
 
-export const registerUser = (email, password, userRegister) => {
+export const registerUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((user) => {
-    const userName = `${userRegister}`
-    user.user.updateProfile({ displayName: userName })
+    const userName = firebase.auth().currentUser  
+    users.userName.updateProfile({ displayName: userName })
 
     checkLogin(user)
     alert('Conta criada com sucesso')
@@ -45,10 +45,6 @@ export const signIn = (email, password) => {
 
 export const logOut = () => {
   firebase.auth().signOut()
-  .then(() => {
-    history.pushState(null, null, window.location.pathname)
-    alert('Desconectado')
-  });
 };
 
 export const checkLogin = () => {
@@ -69,7 +65,7 @@ export const creatPost = (postInitial) => {
     userName: `${firebase.auth().currentUser.displayName}`,
     userEmail: `${firebase.auth().currentUser.email}`, //identifica o usuário que está logado
     text: postInitial, // aqui vai o texto
-    likes: 0,
+    likes: [],
     //comments: [], // (array vazio de comentários)
     date: new Date().toLocaleString(),
   });
@@ -99,6 +95,14 @@ export const likePost = (postsId) => {
     //aumenta valor numérico, úteis para implementar contadores
   })
 };
+
+// export const likePost = (postsId) => {
+//   return firebase.firestore().collection("posts").doc(postsId).update({
+//     likes: likes.includes(postsId)
+//     //aumenta valor numérico, úteis para implementar contadores
+//   })
+// };
+
 
 
 // const firestore = firebase.firestore();

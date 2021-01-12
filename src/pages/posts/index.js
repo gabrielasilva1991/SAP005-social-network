@@ -42,15 +42,11 @@ const showPosts = (posts) => {
   postCreat.innerHTML += `
     <div class="post-individual" id="${posts.postId}">
 
-      <div class="post-name>
-        <h2 class="user-name" id="${posts.userName}"></h2>
-        <img src="teste.jpeg">
-      </div>
-
       <div class="post-text">
-        <textarea class="post-area" ${posts.id}>${posts.text}</textarea>
+        <p id="show-text">${posts.text}</p>
+        <p id="show-name">${posts.userName} </p>
         <p id="show-date">${posts.date} </p> 
-        <p id="show-like" >${posts.likes}</p>
+        <p id="show-like">${posts.likes}</p>
       </div>
 
       <div class="post-edit">
@@ -58,7 +54,6 @@ const showPosts = (posts) => {
       </div>
 
       <div class="button">
-
         <button class="like" data-like="${posts.postId}">Curtir</button>
         <button class="edit" data-edit="${posts.postId}">Editar</button>
         <button class="delete" data-id="${posts.postId}">Deletar</button>
@@ -69,12 +64,28 @@ const showPosts = (posts) => {
   `
   
   postCreat.querySelectorAll(".like").forEach((e)=> {
-    e.addEventListener("click", (e) => {
-      e.target.parentNode.querySelector(".like") // e.target pega o elemento que cliquei
-      //parent aplica para todos os delete da pagina
-      likePost(posts.postId)
+    e.addEventListener("click", (e) => { 
+      likePost(e.target.dataset.like)
     });
-  }) 
+  });
+
+  postCreat.querySelectorAll(".delete").forEach((e)=> {
+    e.addEventListener("click", (e) => {
+      deletePost(e.target.dataset.id) 
+    });
+  });
+
+
+
+  // postCreat.querySelectorAll(".like").forEach((e)=> {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.parentNode.querySelector(".like") // e.target pega o elemento que cliquei
+  //     //parent aplica para todos os delete da pagina
+  //     likePost(posts.postId)
+  //   });
+  // }) 
+
+
 
   // const btnLike = document.querySelectorAll(".like");
 
@@ -96,14 +107,16 @@ const showPosts = (posts) => {
 
 
 
-  postCreat.querySelectorAll(".delete").forEach((e)=> {
-    e.addEventListener("click", (e) => {
-      e.target.parentNode.querySelector(".delete") // e.target pega o elemento que cliquei  
-      //parent aplica para todos os delete da pagina // sempre volta a uma casa anteriror(div)
-      deletePost(posts.postId)
-    });
-  }) 
+  // postCreat.querySelectorAll(".delete").forEach((e)=> {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.parentNode.querySelector(".delete") // e.target pega o elemento que cliquei  
+  //     //parent aplica para todos os delete da pagina // sempre volta a uma casa anteriror(div)
+  //     deletePost(posts.postId)
+  //   });
+  // }) 
 
+
+  
   // const btnDelete = document.querySelectorAll(".delete");
 
   // btnDelete.forEach((btn)=> {

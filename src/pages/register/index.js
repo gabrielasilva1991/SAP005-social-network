@@ -12,8 +12,8 @@ export const Register = () => {
     </form>
   `;
   
-    //const userName = rootElement.querySelector("#name").value;
-    
+  // rootElement.querySelector("#name").value;
+  
 
   rootElement.querySelector("#button-register").addEventListener("click", (e) => {
     const email = rootElement.querySelector("#email").value;
@@ -21,6 +21,5 @@ export const Register = () => {
     e.preventDefault();
     return registerUser(email, password);
   });
-  
   return rootElement;
 };
