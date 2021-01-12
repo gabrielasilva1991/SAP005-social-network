@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { logOut, creatPost, loadingPost, likePost, deletePost } from '../../services/index.js'
-=======
-import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js';
->>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
 
 export const Posts = () => {
   const rootElement = document.createElement("div");
@@ -15,13 +11,9 @@ export const Posts = () => {
       <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
       <button type="submit" id="submit-post">Publicar</button>
     </form>
-<<<<<<< HEAD
 
     <div id="post-creat"></div>
 
-=======
-    <div id="container-post"></div>
->>>>>>> dc364face951a95c1fb640a8299a597a1fe9a743
   `;
 
   const postCreat = rootElement.querySelector("#new-post");
