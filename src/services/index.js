@@ -32,9 +32,9 @@ export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(() => {
     const user = firebase.auth().currentUser
-    checkLogin(user)
+    checkLogin(user) 
      alert('Login realizado com sucesso')
-     alert(`Olá, ${firebase.auth().currentUser.displayName}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
+     //alert(`Olá, ${firebase.auth().currentUser.displayName}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
   })
   .catch(() => {
     alert('Email e/ou senha incorretos')
@@ -60,27 +60,67 @@ export const checkLogin = () => {
 };
  
 //PÁGINA DE POSTS
-export const creatPost = (postInicial) => {
+export const creatPost = (postCreat) => {
   // const x = firebase.auth().currentUser
   // console.log(x)
   firebase.firestore().collection("posts").add({
     userName: firebase.auth().currentUser.displayName,
     userEmail: firebase.auth().currentUser.email, //(identifica o usuário que está logado)
-    text: `${postInicial}`, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
+    text: postCreat, // (uau, aqui vai o texto, minha nossa!!! innerText/innerHtml)
     likes: 0,
     date: new Date().toLocaleString(),
     // comments: [], // (array vazio de comentários)
   });
 };
 
-export const loadingPost = () => {
+export const getPost = (showPosts) => {
   return firebase.firestore().collection("posts").orderBy("date", "desc").get()
+  .then(results => {
+    results.forEach(doc => {
+      showPosts({
+        postId: doc.id,
+        userName: doc.data().userName,
+        userEmail: doc.data().userEmail,
+        text: doc.data().text,
+        likes: doc.data().likes,
+        date: doc.data().date,
+        // comments: doc.data().comments,
+      });
+    });
+  })
 };
 
+
+
+
+// export const likePost = (postId) => {
+//   return firebase.firestore().collection("likes").doc(postId).update({
+//     liked: firebase.firestore().FieldValue.increment(1) 
+//     //aumenta valor numérico, úteis para implementar contadores
+//   });
+// };
+
+// export const likePost = () => {
+//   return firebase.firestore().collection("likes").add({
+//     likes: [],
+//   })
+//   .then(() => {
+//     console.log("Deu certo")
+//     return Promise.resolve(true)
+//   })
+//   .catch((error) => {
+//     console.log("Deu ruim")
+//     return Promise.reject(error)
+//   })
+// }
+
 export const likePost = (postId) => {
-  return firebase.firestore().collection("posts").doc(postId).update({
-    likes: firebase.firestore.FieldValue.increment(1) 
-    //aumenta valor numérico, úteis para implementar contadores
+  return firebase.firestore().collection("posts").doc(postId).get()
+  .then((post) => {
+    const likes = (post.data().likes) + 1;
+    firebase.firestore().collection("posts").doc(postId).update({
+      likes,
+    });
   });
 };
 

@@ -1,4 +1,4 @@
-import { logOut, creatPost, loadingPost, likePost, deletePost } from '../../services/index.js'
+import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement('div');
@@ -15,49 +15,27 @@ export const Posts = () => {
   `;
 
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
-    e.preventDefault();
+    e.preventDefault();loading
     return logOut();
   });
 
-  const loadPost = () => {
-    loadingPost().then(results => {
-      // let cardPost = document.querySelector("#post-creat")
-      // cardPost.innerHTML= "";
-      
-      // const div = document.createElement("div")
-      // div.classList.add("post-creat")
-      document.querySelector("#post-creat").innerHTML= "",
-      
-      results.forEach(doc => {
-        showPosts({
-          postId: doc.id,
-          userName: doc.data().userName,
-          userEmail: doc.data().userEmail,
-          text: doc.data().text,
-          likes: doc.data().likes,
-          date: doc.data().date,
-          // comments: doc.data().comments,
-        });
-      });
-
-      //cardPost.appendChild(div)
-    });
-  };
-
-  rootElement.querySelector("#new-post").onload = loadPost();
+  const newPost = rootElement.querySelector("#new-post")
+  newPost.onload = getPost(showPosts);
 
   rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
-    const postInitial = rootElement.querySelector("#new-post").value;
-    creatPost(postInitial)
-    document.querySelector("#post-creat").innerHTML= "Carregando..."
-    loadPost()
+    const postCreat = rootElement.querySelector("#new-post").value;
+    creatPost(postCreat)
+    getPost(showPosts)
+    newPost.value = ""
+    rootElement.querySelector("#post-creat").innerHTML= "";
   });
     
   return rootElement;
 };
 
 const showPosts = (posts) => {
+  console.log(posts)
 
   const postCreat = document.querySelector("#post-creat")
   
@@ -77,72 +55,126 @@ const showPosts = (posts) => {
   `
   postCreat.innerHTML += postsTemplates; 
 
+  // postCreat.querySelectorAll(".like").forEach((e)=> {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.parentNode.classList.add("likes"); 
+  //     likePost(posts.postId).then(() => {
+  //       console.log("Curtiu")
+  //     })
+  //     .catch(() => {
+  //       alert("Tente curtir novamente")
+  //     });
+  //   });
+  // })
 
-  postCreat.querySelectorAll(".like").forEach((e)=> {
-    e.addEventListener("click", (e) => {
-      e.target.parentNode.querySelector(".like"); 
-      likePost(posts.postId)
-      loadingPost()
+
+  const btnLike = postCreat.querySelectorAll(".like");
+
+  btnLike.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      executeLike(e)
     });
-  })
+  }) 
+
+  const executeLike = (e) => {
+    likePost()
+    .then((retorno) => {
+      console.log(retorno)
+      e.target.classList.add("likes")
+    })
+    .catch(() => {
+      alert("Tente curtir novamente")
+    });
+  }
+
 
   postCreat.querySelectorAll(".delete").forEach((e)=> {
     e.addEventListener("click", (e) => {
-      e.target.parentNode.querySelector(".delete"); 
-      //e.target.parentNode.querySelector("#delete") 
-      //parent aplica para todos os delete da pagina
+      e.target.parentNode.querySelector(".delete") // e.target pega o elemento que cliquei  
+      //parent aplica para todos os delete da pagina // sempre volta a uma casa anteriror(div)
       deletePost(posts.postId)
-      loadingPost()
     });
   })
+};
 
-  // postCreat.querySelector(".edit").forEach((e) => {
+  // postCreat.querySelectorAll(".delete").forEach((e)=> {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.parentNode.querySelector(".delete") 
+  //     //parent aplica para todos os delete da pagina // sempre volta a uma casa anteriror(div)
+  //     deletePost(posts.postId)
+  //   });
+  // }) 
+
+
+  // const executedelete = (e) => {
+  //   deletePost().then(() => {
+  //     console.log("Deletou")
+  //   })
+  //   .catch(() => {
+  //     alert("Tente deletar novamente")
+  //   });
+  // }
+
+
+
+
+
+
+  // postCreat.querySelectorAll(".like").forEach((e)=> {
+  //   e.addEventListener("click", (e) => {
+  //     e.target.parentNode.querySelector(".like"); 
+  //     likePost(posts.postId)
+  //     loadingPost()
+  //   });
+  // })
+
+  
+
+  // postCreat.querySelectorAll(".edit").forEach((e) => {
   //   e.addEventListener("click", (e) => {
   //     e.target.dataset.id.querySelector(".edit");
   //     editPost(posts.postId)
   //     loadingPost()
   //   });
   // })
-};
-
 
  
-//MODELO EX ALUNA
+  //MODELO EX ALUNA
 
-// feedArea.addEventListener('click', (event) => {
-//   const closestEditar = event.target.closest(btnEditar);
-//   if (closestEditar && feedArea.contains(closestEditar)) {
-//     const closestTextarea = closestEditar.parentNode.querySelector('.editar-post');
-//     closestTextarea.style.display = 'block';
-//     const closestBtnSalvarEdicao = closestEditar.parentNode.querySelector('.btn-salvar-editado');
-//     closestBtnSalvarEdicao.style.display = 'block';
+  // feedArea.addEventListener('click', (event) => {
+  //   const closestEditar = event.target.closest(btnEditar);
+  //   if (closestEditar && feedArea.contains(closestEditar)) {
+  //     const closestTextarea = closestEditar.parentNode.querySelector('.editar-post');
+  //     closestTextarea.style.display = 'block';
+  //     const closestBtnSalvarEdicao = closestEditar.parentNode.querySelector('.btn-salvar-editado');
+  //     closestBtnSalvarEdicao.style.display = 'block';
 
-//     closestBtnSalvarEdicao.addEventListener('click', () => {
-//       closestTextarea.style.display = 'none';
-//       closestBtnSalvarEdicao.style.display = 'none';
-//       const closestPost = closestEditar.parentNode.querySelector('.texto-post');
-//       const postFinal = closestTextarea.value;
-//       closestPost.innerHTML = postFinal;
-//       const closestId = closestEditar.parentNode.querySelector('.id-escondido').innerText;
-
-
+  //     closestBtnSalvarEdicao.addEventListener('click', () => {
+  //       closestTextarea.style.display = 'none';
+  //       closestBtnSalvarEdicao.style.display = 'none';
+  //       const closestPost = closestEditar.parentNode.querySelector('.texto-post');
+  //       const postFinal = closestTextarea.value;
+  //       closestPost.innerHTML = postFinal;
+  //       const closestId = closestEditar.parentNode.querySelector('.id-escondido').innerText;
 
 
 
 
- 
 
-// const showPosts = () => {
-//   const rootElement = document.createElement('div');
-//   const posts = getPosts()
-//   let element = ''
 
-//   posts.map(post => {
-//     element += `
-//       <p>${post.message} </p>
-//     `;
-//   });
+  
 
-//   rootElement.innerHTML = element
-//   showPosts() 
-// };
+  // const showPosts = () => {
+  //   const rootElement = document.createElement('div');
+  //   const posts = getPosts()
+  //   let element = ''
+
+  //   posts.map(post => {
+  //     element += `
+  //       <p>${post.message} </p>
+  //     `;
+  //   });
+
+  //   rootElement.innerHTML = element
+  //   showPosts() 
+  // };
