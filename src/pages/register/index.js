@@ -1,7 +1,7 @@
 import { registerUser } from '../../services/index.js';
 
 export const Register = () => {
-  const rootElement = document.createElement('div');
+  const rootElement = document.createElement("div");
   rootElement.innerHTML = `
     <h1>Crie sua conta</h1>
     <form>
@@ -12,9 +12,6 @@ export const Register = () => {
     </form>
   `;
   
-  // rootElement.querySelector("#name").value;
-  
-
   rootElement.querySelector("#button-register").addEventListener("click", (e) => {
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
