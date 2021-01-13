@@ -90,7 +90,7 @@ const checkLogin = () => {
 //PÁGINA DE POSTS
 export const creatPost = (postCreat) => {
   firebase.firestore().collection("posts").add({
-    userName: firebase.auth().currentUser.displayName,
+    userName: firebase.auth().currentUser,
     userEmail: firebase.auth().currentUser.email, 
     text: postCreat, 
     likes: 0,
@@ -131,4 +131,3 @@ export const editPost = (id, editedPost) => {
   .then(() => true)
   .catch((error) => error);
 };
-

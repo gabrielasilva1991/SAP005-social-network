@@ -113,6 +113,3 @@ const showPosts = (posts) => {
     }; 
   });
 };
-
-
-
