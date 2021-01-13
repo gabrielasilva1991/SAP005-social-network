@@ -12,7 +12,7 @@ export const Login = () => {
           <input type="password" class="input-login" id="my-password" placeholder="Senha"/>       
           <button type="submit" class="button-login" id="button-login">Entrar</button>
           <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
-          <button class="button-google" id="button-google"><img id="img-google" src="img/google.png" alt="img-google"></button>
+          <button class="button-google" id="button-google"><img id="img-google" src="img/googlepng.png" alt="img-google"></button>
           <label class="google" >Entrar com o Google</label>
           <script type="module" src="./register/index.js"></script>
         </form>

@@ -40,11 +40,10 @@ const showPosts = (posts) => {
   postCreat.innerHTML += `
     <div class="post-individual" id="${posts.postId}">
       <div class="post-text">
-        <p id="show-text">${posts.text}</p>
-        <p id="show-name">${posts.userName} </p>
-        <p id="show-date">${posts.date} </p> 
+        <p id="show-name">${posts.userName}</p>
+        <p id="show-date">${posts.date}</p>
+        <p id="show-text">${posts.text}</p> 
         <p id="show-like">${posts.likes}</p>
-      </div>
       <div class="post-edit"></div>
       
       <div class="button">
@@ -67,5 +66,4 @@ const showPosts = (posts) => {
       deletePost(e.target.dataset.id) 
     });
   });
-  
 };
