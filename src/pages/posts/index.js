@@ -1,4 +1,4 @@
-import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js';
+import { logOut, creatPost, getPost, likePost, deletePost, editPost } from '../../services/index.js';
 
 export const Posts = () => {
   const rootElement = document.createElement("div");
@@ -19,15 +19,15 @@ export const Posts = () => {
     return logOut();
   });
 
-  const newPost = rootElement.querySelector("#new-post")
+  const newPost = rootElement.querySelector("#new-post");
   newPost.onload = getPost(showPosts);
 
   rootElement.querySelector("#submit-post").addEventListener("click", (e) => {
     e.preventDefault();
     const postCreat = rootElement.querySelector("#new-post").value;
-    creatPost(postCreat)
-    getPost(showPosts)
-    newPost.value = ""
+    creatPost(postCreat);
+    getPost(showPosts);
+    newPost.value = "";
     rootElement.querySelector("#container-post").innerHTML= "";
   });
   
@@ -35,38 +35,82 @@ export const Posts = () => {
 };
 
 const showPosts = (posts) => { 
-  const postCreat = document.querySelector("#container-post")
-  
+  const postCreat = document.querySelector("#container-post");
   postCreat.innerHTML += `
     <div class="post-individual" id="${posts.postId}">
 
       <div class="post-text">
-        <p id="show-text">${posts.text}</p>
-        <p id="show-name">${posts.userName} </p>
-        <p id="show-date">${posts.date} </p> 
-        <p id="show-like">${posts.likes}</p>
+        <p class="show-name" id="show-name">${posts.userName}</p>
+        <p class="show-date" id="show-date">${posts.date}</p>
+        <p class="show-text" id="show-text">${posts.text}</p> 
+        <p class="show-like" id="show-like">${posts.likes}</p>
       </div>
 
-      <div class="post-edit"></div>
-      
-      <div class="button">
-        <button class="like" data-like="${posts.postId}">Curtir</button>
-        <button class="edit" data-edit="${posts.postId}">Editar</button>
-        <button class="delete" data-id="${posts.postId}">Deletar</button>
+      <button class="like" data-like="${posts.postId}">Curtir</button>
+      <button class="edit" data-edit="${posts.postId}">Editar</button>
+      <button class="delete" data-id="${posts.postId}">Deletar</button>
+
+      <div class="on-edit">
+        <textarea class="edit-post" id="edit-post">${posts.text}</textarea>
+        <button class="save-button" data-save="${posts.postId}">Salvar</button>
       </div>
 
     </div>  
   `;
 
-  postCreat.querySelectorAll(".like").forEach((e)=> {
-    e.addEventListener("click", (e) => { 
+  postCreat.querySelectorAll(".like").forEach((button) => {
+    button.addEventListener("click", async(e) => {
+      e.preventDefault()
+      const containerLike = e.target.parentNode
       likePost(e.target.dataset.like)
+      .then(() => {
+          const showLike = containerLike.querySelector(".show-like")
+          showLike.innerHTML = `${Number(showLike.textContent) + Number(1)}`
+      });
     });
   });
 
   postCreat.querySelectorAll(".delete").forEach((e)=> {
     e.addEventListener("click", (e) => {
-      deletePost(e.target.dataset.id) 
+      const confirmDelete = confirm("Deseja deletar o post?");
+      if (confirmDelete == true) {
+        deletePost(e.target.dataset.id)
+        e.target.parentNode.innerHTML = ``;
+      }
+      else {
+        alert("Publicação não excluída");
+      };
     });
+  });
+
+  postCreat.querySelectorAll(".edit").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      showAreaToEdit(e)
+    });
+
+    const showAreaToEdit = (e) => {
+      const userPost = e.target.parentNode
+      const textArea = userPost.querySelector(".on-edit");
+      textArea.style.display = "block";
+      const saveButton = userPost.querySelector(".save-button");
+      saveButton.addEventListener("click", () => {
+        saveEditedPost(userPost) 
+      });
+    };
+
+    const saveEditedPost = (userPost) => {
+      const oldText = userPost.querySelector(".show-text");
+      const editedText = userPost.querySelector(".edit-post").value;
+      const textArea = userPost.querySelector(".on-edit");
+      const idPost = userPost.id;
+      editPost(idPost, editedText)
+      .then(() => {
+      oldText.innerHTML = editedText;
+      textArea.style.display = "none"
+      })
+      .catch(() => {
+        alert("Erro, tente novamente");
+      });
+    }; 
   });
 };

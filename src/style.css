@@ -88,3 +88,9 @@
 .footer a:hover {
     color:red;
 }
+
+/* esconder caixa de editar e id do usuário */
+.on-edit,
+.id-escondido{
+    display:none
+}

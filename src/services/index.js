@@ -14,15 +14,48 @@ export const loginWithGoogle = () => {
   });
 };
 
-export const registerUser = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(() => {
-    const user = firebase.auth().currentUser.displayName
-    checkLogin(user)
-    alert("Conta criada com sucesso")
-    alert(`Olá, ${document.querySelector("#name").value}`)
+const saveUserUpdate = (name) => {
+  console.log(firebase.auth().currentUser);
+  firebase.auth().currentUser.updateProfile({
+    displayName: name,
+    photoURL: "../img/olho.png",
   })
-  .catch(() => {
+  .then(() => {
+    console.log("deu certo saveuserupdate"); 
+  })
+  .catch((error) => {
+    console.log("deu ruim saveuserupdate");
+    console.log(error);
+  });     
+};
+
+const saveUser = (user, userEmail, userName) => {
+  console.log(user.uid, userEmail, userName)
+  firebase.firestore().collection("users").doc(userEmail).set({
+    userId: user.uid,
+    name: userName,
+    email: userEmail,
+  })
+  .then(() => {
+    console.log("deu certo save user");
+  })
+  .catch((error) => {
+    console.log("deu ruim save user");
+    console.log(error);
+  });  
+};
+
+export const registerUser = (name, email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userUpdate) => {
+    console.log(userUpdate);
+    saveUserUpdate(name)
+    saveUser(userUpdate.user, email, name)
+    alert("Conta criada com sucesso");
+    onNavigate("/")
+  })    
+  .catch((error) => {
+    console.log(error);
     alert("Falha ao realizar o cadastro")
   });
 };
@@ -33,7 +66,7 @@ export const signIn = (email, password) => {
     const user = firebase.auth().currentUser
     checkLogin(user) 
      alert("Login realizado com sucesso")
-     //alert(`Olá, ${firebase.auth().currentUser.displayName}`) //NÃO ESTÁ APARECENDO O NOME DO USUÁRIO: NULL
+     alert(`Olá, ${firebase.auth().currentUser.displayName}`)
   })
   .catch(() => {
     alert("Email e/ou senha incorretos")
@@ -57,7 +90,7 @@ const checkLogin = () => {
 //PÁGINA DE POSTS
 export const creatPost = (postCreat) => {
   firebase.firestore().collection("posts").add({
-    userName: firebase.auth().currentUser.displayName,
+    userName: firebase.auth().currentUser,
     userEmail: firebase.auth().currentUser.email, 
     text: postCreat, 
     likes: 0,
@@ -81,19 +114,20 @@ export const getPost = (showPosts) => {
   })
 };
 
-export const likePost = (postId) => {
-  return firebase.firestore().collection("posts").doc(postId).update({
+export const likePost = async(idPost) => {
+  return await firebase.firestore().collection("posts").doc(idPost).update({
     likes: firebase.firestore.FieldValue.increment(1)
-  });
+  })
 };
 
 export const deletePost = (postId) => {
   return firebase.firestore().collection("posts").doc(postId).delete()
 };
 
-// export const editPost = (postId) => {
-//   return firebase.firestore().collection("posts").doc(postId).update({
-//     text: textArea.value
-//   });
-// };
-
+export const editPost = (id, editedPost) => {
+  return firebase.firestore().collection("posts").doc(id).update({
+    text: editedPost
+  })
+  .then(() => true)
+  .catch((error) => error);
+};
