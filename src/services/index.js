@@ -14,10 +14,11 @@ export const loginWithGoogle = () => {
   });
 };
 
+
 export const registerUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then(() => {
-    const user = firebase.auth().currentUser.displayName
+    const user = firebase.auth().currentUser
     checkLogin(user)
     alert("Conta criada com sucesso")
     alert(`Olá, ${document.querySelector("#name").value}`)
@@ -26,6 +27,21 @@ export const registerUser = (email, password) => {
     alert("Falha ao realizar o cadastro")
   });
 };
+
+// export const userId = () => {
+//   return firebase.auth().currentUser.uid;
+// };
+
+// export const userUpdate = (userName, userEmail) => {
+//   firebase.firestore().collection("users").add({
+//     name: userName,
+//     email: userEmail,
+//   })
+// };
+
+// export const getUserUpdate = () => {
+//   return firebase.firestore().collection('users').get()
+// };
 
 export const signIn = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -57,7 +73,7 @@ const checkLogin = () => {
 //PÁGINA DE POSTS
 export const creatPost = (postCreat) => {
   firebase.firestore().collection("posts").add({
-    userName: firebase.auth().currentUser.displayName,
+    userName: firebase.auth().currentUser,
     userEmail: firebase.auth().currentUser.email, 
     text: postCreat, 
     likes: 0,
@@ -96,4 +112,3 @@ export const deletePost = (postId) => {
 //     text: textArea.value
 //   });
 // };
-

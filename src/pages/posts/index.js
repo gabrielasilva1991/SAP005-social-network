@@ -1,4 +1,4 @@
-import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js';
+import { logOut, creatPost, getPost, likePost, deletePost } from '../../services/index.js'
 
 export const Posts = () => {
   const rootElement = document.createElement("div");
@@ -27,25 +27,24 @@ export const Posts = () => {
     const postCreat = rootElement.querySelector("#new-post").value;
     creatPost(postCreat)
     getPost(showPosts)
-    newPost.value = "";
+    newPost.value = ""
     rootElement.querySelector("#container-post").innerHTML= "";
   });
   return rootElement;
 };
 
 const showPosts = (posts) => { 
-  const postCreat = document.querySelector("#container-post");
+  console.log(posts)
+  const postCreat = document.querySelector("#container-post")
   
   postCreat.innerHTML += `
     <div class="post-individual" id="${posts.postId}">
-
       <div class="post-text">
         <p id="show-text">${posts.text}</p>
         <p id="show-name">${posts.userName} </p>
         <p id="show-date">${posts.date} </p> 
         <p id="show-like">${posts.likes}</p>
       </div>
-
       <div class="post-edit"></div>
       
       <div class="button">
@@ -53,12 +52,12 @@ const showPosts = (posts) => {
         <button class="edit" data-edit="${posts.postId}">Editar</button>
         <button class="delete" data-id="${posts.postId}">Deletar</button>
       </div>
-
     </div>  
   `;
 
   postCreat.querySelectorAll(".like").forEach((e)=> {
     e.addEventListener("click", (e) => { 
+      //const currentUserLike = firebase.auth().currentUser.uid;
       likePost(e.target.dataset.like)
     });
   });
@@ -68,4 +67,5 @@ const showPosts = (posts) => {
       deletePost(e.target.dataset.id) 
     });
   });
+  
 };

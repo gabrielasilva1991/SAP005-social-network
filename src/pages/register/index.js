@@ -13,10 +13,12 @@ export const Register = () => {
   `;
   
   rootElement.querySelector("#button-register").addEventListener("click", (e) => {
+    //const name = rootElement.querySelector("#name").value;
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
     e.preventDefault();
-    return registerUser(email, password);
+    registerUser(email, password);
+    //userUpdate(name, email)
   });
   return rootElement;
 };
