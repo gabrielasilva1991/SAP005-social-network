@@ -3,11 +3,12 @@ import { registerUser } from '../../services/index.js';
 export const Register = () => {
   const rootElement = document.createElement("div");
   rootElement.innerHTML = `
-    <h1>Crie sua conta</h1>
-    <form>
+    <form class="container-register">
+      <h1 class="paragrafe">Crie sua conta</h1>
       <input type="name" class="input-register" id="name" placeholder="Nome"/>
       <input type="email" class="input-register" id ="email" placeholder ="E-mail"/>
       <input type="password" class="input-register" id="password" placeholder="Senha"/>
+      <p class="instruction">A senha deve ter no mínimo 6 dígitos</p>
       <button type="submit" class="button-register" id="button-register">Registrar-se</button>
     </form>
   `;

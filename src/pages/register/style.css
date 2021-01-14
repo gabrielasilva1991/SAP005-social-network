@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container-register{
+    display: flex;
+    flex-direction: column;    
+    text-align: center;
+    align-items: center;
+    border-color: rgb(19, 2, 2);
+    border-style: groove;
+    border-radius: 40px;
+    padding: 40px;
+    margin: 50px;
+    background-color: #e0bcdd;
+    /* margin-right: 500px;
+    margin-left: 500px; */
+}
+
+.paragrafe{
+    background-color: #e0bcdd;
+}
+
+.input-register{
+    width: 150px;
+    font-size: 90%;
+    padding: 10px 5px 10px 5px;  /* superior | direita | inferior | esquerda */
+    border-style: groove;
+    margin: 10px; 
+    border-radius: 10px 10px 10px 10px; 
+    background-color: white; 
+}
+
+.button-register{
+    width: 100px;
+    font-size: 90%;
+    padding: 5px;
+    border-style: groove;
+    border-color: violet;
+    margin: 10px;  
+    border-radius: 20px 20px 20px 20px; 
+    cursor: pointer;
+    background-color: violet;
+}
+
+.instruction {
+    font-size: small;
+    background-color: #e0bcdd;
+}
+
+@media (min-width:1000px) {
+
+.container-register{
+    margin: 200px;
+    padding: 50px;
+}
+.button-register{
+    width: 100px;
+}
+
+
+
+
+
+/* 
+px - valor fixo 
+vw - valor que acompanha a largura página
+vh - valor que acompanha a altura página
+em - ligado com tamanho da fonte do eemento q ta usando 
+.Cor01 {color: #4b204b;}
+.Cor02 {color: #e0bcdd;}
+.Cor03 {color: #993399;}
+*/

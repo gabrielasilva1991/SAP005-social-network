@@ -90,10 +90,11 @@ const checkLogin = () => {
 //PÁGINA DE POSTS
 export const creatPost = (postCreat) => {
   firebase.firestore().collection("posts").add({
-    userName: firebase.auth().currentUser,
+    userName: firebase.auth().currentUser.displayName,
     userEmail: firebase.auth().currentUser.email, 
+    userUid: firebase.auth().currentUser.uid,
     text: postCreat, 
-    likes: 0,
+    likes: [],
     date: new Date().toLocaleString(),
   });
 };
@@ -114,9 +115,60 @@ export const getPost = (showPosts) => {
   })
 };
 
+// export const likePost = async(postId, userId) => {
+//   const postCollection = firebase.firestore().collection('posts');
+//   const arrayUserAdd = firebase.firestore.FieldValue.arrayUnion(userId);
+//   const arrayUserDlt = firebase.firestore.FieldValue.arrayRemove(userId);
+//   console.log(data().likes)
+//   return await postCollection.doc(postId).get()
+//     .then(function callBackCompareUser(doc) {
+//       if (doc.data().likes.includes(userId)) {
+//         postCollection.doc(postId).update({
+//             likes: arrayUserAdd,
+//           })
+//           .catch((error) => {
+//             const errorObject = new ErrorDictionary(error);
+//             console.log(errorObject.translate(false));
+//           });
+//       } else {
+//         postCollection.doc(postId).update({
+//             likes: arrayUserDlt,
+//           })
+//           .catch((error) => {
+//             const errorObject = new ErrorDictionary(error);
+//             console.log(errorObject.translate(false));
+//           });
+//       }
+// //     });
+// // }
+
+// export const likePost = (postId, userId) => {
+//   return firebase.firestore().collection("posts").doc(postId).get()
+//     .then((doc) => {
+//       let postLikesArray = doc.data().likes || [];
+
+//       if (posts.likes.indexOf(userId) != -1) {
+//         likes.splice(likes.indexOf(userId), 1);
+
+//       } else {
+//         likes.push(userId)
+//       }
+//       return firebase.firestore().collection('posts').doc(postId)
+//         .update({
+//           likes: likes
+//         });
+//   });
+// };
+
 export const likePost = async(idPost) => {
   return await firebase.firestore().collection("posts").doc(idPost).update({
-    likes: firebase.firestore.FieldValue.increment(1)
+    likes: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.uid)
+  })
+};
+
+export const disLikePost = async(idPost) => {
+  return await firebase.firestore().collection("posts").doc(idPost).update({
+    likes: firebase.firestore.FieldValue.arrayRemove(firebase.auth().currentUser.uid)
   })
 };
 
