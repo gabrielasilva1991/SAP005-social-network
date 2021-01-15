@@ -37,12 +37,12 @@ Obtivemos os seguintes resultados das entrevistas pessoais:
 
 Com base nas entrevistas e pesquisa realizada definimos as seguintes histórias de usuário:
 
-:blush: Eu como usuário de rede social desejo criar uma conta através de email e senha
-:blush: Eu como usuário de rede social desejo fazer login com conta cadastrada do proprio site
-:blush: Eu como usuário de rede social desejo fazer login através da conta Google
-:blush: Eu como usuário de rede social necessito fazer uma publicação
-:blush: Eu como usuário de rede social necessito curtir as publicações no feed
-:blush: Eu como usuário de rede social necessito deletar algum post específico
+:blush: Eu como usuário de rede social desejo criar uma conta através de email e senha<br/>
+:blush: Eu como usuário de rede social desejo fazer login com conta cadastrada do proprio site<br/>
+:blush: Eu como usuário de rede social desejo fazer login através da conta Google<br/>
+:blush: Eu como usuário de rede social necessito fazer uma publicação<br/>
+:blush: Eu como usuário de rede social necessito curtir as publicações no feed<br/>
+:blush: Eu como usuário de rede social necessito deletar algum post específico<br/>
 :blush: Eu como usuário de rede social necessito editar alguma publicação específica
 
 ## 4. Interface de Usuário :computer:
@@ -61,13 +61,13 @@ E a partir das histórias de usuário, desenvolvemos o seguinte protótipo de ba
 
 Os testes realizados com os usuários trouxeram os seguintes problemas, e tivemos as seguintes resoluções:
 
-:exclamation: Dificuldade em visualizar os campos de email e senha para realização de login
+:exclamation: Dificuldade em visualizar os campos de email e senha para realização de login<br/>
 :star: Resolução: trocamos as cores de fundo para branco e inserimos placeholder nos inputs, para melhor visualização
 
-:exclamation: Dificuldade em criação de conta devido senha não atender pré requisitos
+:exclamation: Dificuldade em criação de conta devido senha não atender pré requisitos<br/>
 :star: Resolução: inserimos orientação a respeito dos pré requisitos da senha logo abaixo do campo de senha
 
-:exclamation: Dificuldade em curtir e descurtir publicação devido botão chamar "curtir" somente
+:exclamation: Dificuldade em curtir e descurtir publicação devido botão chamar "curtir" somente<br/>
 :star: Resolução: trocamos botão de curtir para ícone que representa tanto curtir como descurtir
 
 ### Layout 
@@ -96,9 +96,9 @@ Abaixo nosso quadro de organização:
 
 Neste projeto aprendemos principalmente:
 
-:heavy_check_mark: Construir uma SPA responsiva
-:heavy_check_mark: Configuração, armazenamento, edição, delete e apresentação de dados no Firebase
-:heavy_check_mark: Consumo de promisses
+:heavy_check_mark: Construir uma SPA responsiva<br/>
+:heavy_check_mark: Configuração, armazenamento, edição, delete e apresentação de dados no Firebase<br/>
+:heavy_check_mark: Consumo de promisses<br/>
 :heavy_check_mark: Colaboração pelo Github
 
 ## 6. Pontos de Melhoria :zap:
@@ -114,6 +114,6 @@ Definimos que para as próximas refatorações iremos seguir nos seguintes aprim
 
 Esta aplicação foi desenvolvida com muita dedicação pelas devs: 
 
-:princess: <a href"https://github.com/BiancaSherika">Bianca Shérika</a>
-:princess: <a href"https://github.com/ly-cardozo">Eliane Cardozo</a>
-:princess: <a href"https://github.com/gabrielasilva1991/">Gabriela Silva</a>
+:princess: <a href“https://github.com/BiancaSherika“>Bianca Shérika</a><br/>
+:princess: <a href“https://github.com/ly-cardozo“>Eliane Cardozo</a><br/>
+:princess: <a href“https://github.com/gabrielasilva1991/“>Gabriela Silva</a>
