@@ -6,30 +6,33 @@ Acesse a aplicação aqui: >>>>>>>>>>>>>>>>>>> LINK
 
 - [1. Apresentação](#1-apresentação)
 - [2. Objetivo](#2-objetivo)
-- [3. Usuários](#3-usuarios)
-- [4. Interface de Usuário](#4-interface-de-usuario)
+- [3. Usuários](#3-usuários)
+- [4. Interface de Usuário](#4-interface-de-usuário)
 - [5. Desensolvimento](#5-desenvolvimento)
 - [6. Pontos de Melhoria](#6-pontos-de-melhoria)
 - [7. Devas](#7-devas)
 
 ---
 
-## 1. Apresentação :green_book:
+## 1.Apresentação :green_book:
 
 Projeto desenvolvido em trio durante o Bootcamp da <a href=“https://github.com/Laboratoria“>Laboratória</a> com o objetivo de construir uma aplicação web em formato de rede social capaz de armazenar, manipular, excluir e visualizar dados de acordo com a necessidade do usuário. Para hospedagem dos dados utilizamos o <a href=“https://firebase.google.com/>Firebase</a>, o banco de dados do Google. A temática escolhida para representar o projeto foi livros e leitores.
-
- <img src="https://64.media.tumblr.com/e2d3d40a51352499580ce80aee320d52/tumblr_nd3nvtdkyy1toi58to1_500.gif"/>
  
- ### 2. Objetivo :trophy:
+ ### 2.Objetivo :trophy:
  
 A aplicação tem o objetivo de apreciar o hobbie e paixão de alguns que é a leitura de livros fisicos, de modo que possam compartilhar suas experiências individuais com a leitura entre rede de amigos, com foco em facilitar a troca de livros entre os usuários, para que possam sempre renovar suas leituras e devolver os livros parados na estante, à ativa na comunidade! Assim, diminuindo os impactos ambientais produzidos pelo consumismo não consciente e pelo descarte desnecessário de produtos que ainda podem ser reutilizados.
 
  <img src="https://www.anica.com.br/wp-content/uploads/2017/05/15676363.gif"/>
 
-## 3. Usuários :dancers:
+## 3.Usuários :dancers:
 
-Realizamos entrevistas para identificação dos usuários e caracterização do público alvo, de forma que nossos usuários se caracterizam como leitores ativos de livros físicos, pessoas com afinidade pela leitura e pessoas que tem interesse em adquirir o hábito de ler frequentemente.
-Obtivemos os seguintes resultados das entrevistas pessoais:
+Após pesquisa de mercado, caracterizamos nossos usuários como sendo os leitores ativos de livros físicos, pessoas com afinidade pela leitura e pessoas que tem interesse em adquirir o hábito de ler frequentemente.
+
+<img src="https://64.media.tumblr.com/e2d3d40a51352499580ce80aee320d52/tumblr_nd3nvtdkyy1toi58to1_500.gif"/>
+
+### Entrevistas
+
+Realizamos entrevistas para investigação para com potenciais usuários a respeito do interesse em utilização de rede social focada a leitura e troca de livros e de como seria a visualização da página e suas funcionalidades esperadas, e obtivemos as seguintes respostas:
 
 ![](/src/img/pesquisa1.png) ![](/src/img/pesquisa2.png) ![](/src/img/pesquisa3.png)
 
@@ -45,7 +48,7 @@ Com base nas entrevistas e pesquisa realizada definimos as seguintes histórias 
 :blush: Eu como usuário de rede social necessito deletar algum post específico<br/>
 :blush: Eu como usuário de rede social necessito editar alguma publicação específica
 
-## 4. Interface de Usuário :computer:
+## 4.Interface de Usuário :computer:
 
 ### Protótipo de baixa fidelidade
 
@@ -83,7 +86,7 @@ Sabendo que smarthphones é um meio de acesso à internet muito importante e amp
 >>>>>>>>>>>>>>>>>>> PRINTS PÁGINA CELULAR
 
 
-## 5. Desenvolvimento :fireworks:
+## 5.Desenvolvimento :fireworks:
 
 ### Planejamento :bar_chart:
 
@@ -101,7 +104,7 @@ Neste projeto aprendemos principalmente:
 :heavy_check_mark: Consumo de promisses<br/>
 :heavy_check_mark: Colaboração pelo Github
 
-## 6. Pontos de Melhoria :zap:
+## 6.Pontos de Melhoria :zap:
 
 Definimos que para as próximas refatorações iremos seguir nos seguintes aprimoramentos(não necessariamente nesta ordem):
 
@@ -110,7 +113,7 @@ Definimos que para as próximas refatorações iremos seguir nos seguintes aprim
 - Implementação de página de perfil, onde haja funcionalidade e inserção de foto ao perfil e delete da conta
 - Implementação da funcionalidade anexar imagens/fotos em publicações
 
-## 7. Devas :woman:
+## 7.Devas :woman:
 
 Esta aplicação foi desenvolvida com muita dedicação pelas devs: 
 
