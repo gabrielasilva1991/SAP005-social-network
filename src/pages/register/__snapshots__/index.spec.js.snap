@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register should load the page 1`] = `
+<div>
+  
+    
+  <form
+    class="container-register"
+  >
+    
+      
+    <h1
+      class="paragrafe"
+    >
+      Crie sua conta
+    </h1>
+    
+      
+    <input
+      class="input-register"
+      id="name"
+      placeholder="Nome"
+      type="name"
+    />
+    
+      
+    <input
+      class="input-register"
+      id="email"
+      placeholder="E-mail"
+      type="email"
+    />
+    
+      
+    <input
+      class="input-register"
+      id="password"
+      placeholder="Senha"
+      type="password"
+    />
+    
+      
+    <p
+      class="instruction"
+    >
+      A senha deve ter no mínimo 6 dígitos
+    </p>
+    
+      
+    <button
+      class="button-register"
+      id="button-register"
+      type="submit"
+    >
+      Registrar-se
+    </button>
+    
+    
+  </form>
+  
+  
+</div>
+`;
