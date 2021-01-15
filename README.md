@@ -34,7 +34,7 @@ Após pesquisa de mercado, caracterizamos nossos usuários como sendo os leitore
 
 Realizamos entrevistas para investigação para com potenciais usuários a respeito do interesse em utilização de rede social focada a leitura e troca de livros e de como seria a visualização da página e suas funcionalidades esperadas, e obtivemos as seguintes respostas:
 
-![](/src/img/pesquisa1.png) ![](/src/img/pesquisa2.png) ![](/src/img/pesquisa3.png)
+![](/src/img/pesquisa1.jpeg) ![](/src/img/pesquisa2.jpeg) ![](/src/img/pesquisa3.jpeg)
 
 ### Histórias de Usuário 
 
@@ -54,11 +54,11 @@ Com base nas entrevistas e pesquisa realizada definimos as seguintes histórias 
 
 Durante o processo de criação da aplicação, definimos o seguinte protótipo de baixa fidelidade da página de login:
 
-![](/src/img/prototipo_login.jpg)
+![](/src/img/prototipo_login.jpeg)
 
 E a partir das histórias de usuário, desenvolvemos o seguinte protótipo de baixa fidelidade da página principal:
 
-![](/src/img/prototipo_feed.jpg)
+![](/src/img/prototipo_feed.jpeg)
 
 ### Testes de Usuabilidade e Feedback
 
