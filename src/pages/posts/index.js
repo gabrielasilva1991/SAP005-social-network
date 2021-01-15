@@ -3,18 +3,21 @@ import { showPosts } from "../../componentes/showposts.js";
 
 export const Posts = () => {
   const rootElement = document.createElement("div");
+
   rootElement.innerHTML = `
-    <header>
-      <button id="logout">Sair</button>
+    <header class="header">
+      <h3 class="word">Uma casa sem livros é um corpo sem alma</h3>
+      <button class="logout" id="logout"><img class="img-logout" src="img/sair.png"></button>
     </header>
-    <h1 class="user-name" id="user-name">Postagens</h1>
-    <form action="" class="form-post" id="form-post">
-      <textarea id="new-post" rows="5" cols="50" placeholder="Escreva sua publicação"></textarea>
-      <button type="submit" id="submit-post">Publicar</button>
-    </form>
+    <div class="container-form">
+      <form action="" class="form-post" id="form-post">
+        <textarea class="text-area" id="new-post" rows="5" cols="30" placeholder=" O que você quer trocar hoje?"></textarea>
+        <button type="submit" class="submit" id="submit-post">Publicar</button>
+      </form>
+    </div>
     <div class="container-post" id="container-post"></div>
   `;
-
+  
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
     e.preventDefault();
     return logOut();

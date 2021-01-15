@@ -11,4 +11,8 @@ describe('Register', () => {
     it('should load the page', () => {
         expect(Register()).toMatchSnapshot();
     });
+    it('when the user clicks the button he must have completed the registration', () => {
+        Register().querySelector('#button-register').dispatchEvent(new Event('click'));
+        expect(services.registerUser).toHaveBeenCalled();
+    });
 });

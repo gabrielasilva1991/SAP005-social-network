@@ -1,4 +1,5 @@
 import { registerUser, saveUserUpdate, saveUser } from '../../services/index.js';
+import { onNavigate } from '../../utils/history.js';
 
 export const Register = () => {
   const rootElement = document.createElement("div");
@@ -25,8 +26,7 @@ export const Register = () => {
       alert("Conta criada com sucesso");
       onNavigate("/")
     })    
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
       alert("Falha ao realizar o cadastro")
     });
   });

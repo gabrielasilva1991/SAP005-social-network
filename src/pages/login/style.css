@@ -3,15 +3,6 @@
     padding: 0;
 }
 
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 40px;
-    margin-top: 40px;
-    
-}
-
 .container-login{
     display: flex;
     flex-direction: column;    
@@ -19,44 +10,42 @@
     align-items: center;
     border-color: rgb(19, 2, 2);
     border-style: groove;
-    border-radius: 40px 40px 40px 40px; /*arredondamento dos cantos*/
+    border-radius: 40px;
     padding: 40px;
-    margin-right: 80px;
+    margin: 30px;
+    max-width: 300px;
+    min-width: 100px;
+    background-color: #e0bcdd;
+    justify-content: center;
 }
 
 .title{
     align-items: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 15px;
 }
 
 .input-login{
-    width: 200px;
+    width: 150px;
     font-size: 90%;
-    padding: 10px 5px 10px 5px;  /* superior | direita | inferior | esquerda */
+    padding: 10px 5px;
     border-style: groove;
-    margin: 10px;   
+    margin: 10px; 
+    border-radius: 10px; 
+    background-color: white;  
 }
 
-.button-login{
+.button-login, .button-create-account {
     width: 100px;
     font-size: 90%;
     padding: 5px;
     border-style: groove;
+    border-color: violet;
     margin: 10px;  
-    border-radius: 20px 20px 20px 20px; 
+    border-radius: 20px; 
     cursor: pointer;
-}
-
-.button-create-account{
-    width: 100px;
-    font-size: 90%;
-    padding: 5px;
-    border-style: groove;
-    margin: 10px;  
-    border-radius: 20px 20px 20px 20px; 
-    cursor: pointer;
+    background-color: violet;
 }
 
 .button-google {
@@ -69,28 +58,71 @@
 }
 
 .container-logo{
-    width: 30%;
-    height: 30%;
-    margin-left: 80px;
+    display: none;
 }
 
 .footer{
     flex-direction: row;
     justify-content: flex-end;
-    text-align: right; 
-    margin-right: 200px;
+    text-align: center; 
+    background-color: #e0bcdd;
+    bottom: 0;
+    left: 0;
 }
 
-.footer a:link{
+.footer a:link,
+.footer a:hover{
     text-decoration: none;
-}
-
-.footer a:hover {
     color:red;
 }
 
-/* esconder caixa de editar e id do usuário */
-.on-edit,
-.id-escondido{
-    display:none
+.on-edit, .id-escondido{display:none}
+
+
+@media (min-width:500px) {
+.container-login{margin-left: 100px;}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+}
+
+@media (min-width:700px) {
+.container-login{margin-left: 180px;}
+}
+
+@media (min-width:900px) {
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+}
+
+.container-logo{
+    width: 40%;
+    max-width: 300px;
+    min-width: 100px;
+    height: 40%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+}
+
+.container-login{margin-left: 100px;}
+
+.input-login{width: 200px;}
+
+.footer{text-align: right;}
+
+}
+
+@media (min-width: 1130px) {
+.container-logo{margin-left: 150px;}
+
+.container-login{
+    padding: 60px;
+    margin-left: 170px;
+}
 }

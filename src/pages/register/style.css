@@ -14,21 +14,18 @@
     border-style: groove;
     border-radius: 40px;
     padding: 40px;
-    margin: 0 auto;
+    margin: 40px;
     background-color: #e0bcdd;
-    max-width: 350px;
-    position: absolute;
+    max-width: 300px;
     min-width: 100px;
 }
 
-.paragrafe{
-    background-color: #e0bcdd;
-}
+.paragrafe{background-color: #e0bcdd;}
 
 .input-register{
     width: 150px;
     font-size: 90%;
-    padding: 10px 5px;  /* superior | direita | inferior | esquerda */
+    padding: 10px 5px; 
     border-style: groove;
     margin: 10px; 
     border-radius: 10px; 
@@ -52,19 +49,32 @@
     background-color: #e0bcdd;
 }
 
-@media (min-width:1000px) {
-
+@media (min-width: 500px) {
 .container-register{
-    margin: 200px;
-    padding: 50px;
+    margin-left: 120px;
+    max-width: 335px;
+}
 }
 
+@media (min-width: 700px) {
+.container-register{
+    margin-left: 200px;
+    padding: 50px;
+    max-width: 365px;
+}
+}
 
-/* 
-px - valor fixo 
-vw - valor que acompanha a largura página
-vh - valor que acompanha a altura página
-em - ligado com tamanho da fonte do eemento q ta usando 
-.Cor01 {color: #4b204b;}
-.Cor02 {color: #e0bcdd;}
-.Cor03 {color: #993399;}*/}
+@media (min-width: 900px) {
+.container-register{
+    margin-left: 300px;
+    max-width: 400px;
+}
+}
+
+@media (min-width: 1300px) {
+.container-register{
+    margin-left: 500px;
+    max-width: 430px;
+}
+}
+

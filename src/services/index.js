@@ -1,4 +1,3 @@
-//PÁGINA DE LOGIN
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
@@ -41,7 +40,6 @@ export const checkLogin = () => {
   });
 };
 
-//PÁGINA DE POSTS
 export const creatPost = (postCreat) => {
   return firebase.firestore().collection("posts").add({
     userName: firebase.auth().currentUser.displayName,

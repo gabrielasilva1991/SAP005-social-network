@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Andika New Basic', sans-serif;
+    background-color:#0d1117;
+}
+
+.post-individual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #e0bcdd;
+    border: 1px solid violet;
+    border-radius: 20px;
+    padding: 5px;
+    min-width: 100px;
+    max-width: 350px;
+    margin: 20px auto;
+}
+
+.container-user {
+    min-width: 100px;
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.8em;
+} 
+
+.container-text {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold; 
+    font-size: 1em;
+    padding: 5px;
+} 
+
+.container-like {
+    display: flex;
+    flex-direction: none;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center;
+    font-size: 1em;
+    padding: 5px;
+} 
+
+.container-like {
+    display: flex;
+    flex-direction: none;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    /* margin: 0 auto; */
+    text-align: center;
+    font-size: 1em;
+    padding: 5px;
+} 
+
+.like,.edit,.delete,.save,
+.img-like,.img-edit,.img-delete,.img-save {
+    cursor: pointer;
+    background:transparent;
+    border: 1px;
+    width: 20px;
+    height: 20px;
+}
+
+.on-edit {
+    display:none
+}
+
+ @media (max-width:400px) {
+    .word {
+        font-size: 0.8em;
+    }
+}
