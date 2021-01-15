@@ -1,6 +1,6 @@
 # :books: A Menina que Trocava Livros
 
-Acesse a aplicação aqui: >>>>>>>>>>>>>>>>>>> LINK
+Acesse a aplicação aqui: https://rede-social-4f31b.web.app/
 
 ## Índice
 
@@ -77,13 +77,13 @@ Os testes realizados com os usuários trouxeram os seguintes problemas, e tivemo
 
 Após analisarmos os testes de usabilidade e resolver as dificuldades, finalizamos o layout da página desta forma:
 
->>>>>>>>>>>>>>>>>>>>>>> PRINTS PAGINA NOTEBOOK
+PRINTS PAGINA NOTEBOOK
 
 ### Responsividade :iphone:
 
 Sabendo que smarthphones é um meio de acesso à internet muito importante e amplamente utilizado, elaboramos a responsividade da aplicação de forma que o resultado foi esse:
 
->>>>>>>>>>>>>>>>>>> PRINTS PÁGINA CELULAR
+PRINTS PÁGINA CELULAR
 
 
 ## 5.Desenvolvimento :fireworks:
