@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should load the page 1`] = `
+<div>
+  
+    
+  <div
+    <div=""
+    class="container"
+  >
+    
+        
+    <form
+      class="container-login"
+    >
+      
+          
+      <h1
+        class="title"
+      >
+        A Menina que Trocava Livros
+      </h1>
+                    
+          
+      <input
+        class="input-login"
+        id="e-mail"
+        placeholder="E-mail"
+        type="email"
+      />
+      
+          
+      <input
+        class="input-login"
+        id="my-password"
+        placeholder="Senha"
+        type="password"
+      />
+             
+          
+      <button
+        class="button-login"
+        id="button-login"
+        type="submit"
+      >
+        Entrar
+      </button>
+      
+          
+      <button
+        class="button-create-account"
+        id="button-create-account"
+        type="submit"
+      >
+        Criar Conta
+      </button>
+      
+          
+      <button
+        class="button-google"
+        id="button-google"
+      >
+        <img
+          alt="img-google"
+          id="img-google"
+          src="img/google.png"
+        />
+      </button>
+      
+          
+      <label
+        class="google"
+      >
+        Entrar com o Google
+      </label>
+      
+          
+      <script
+        src="./register/index.js"
+        type="module"
+      />
+      
+        
+    </form>
+    
+
+        
+    <img
+      <a=""
+      alt="Logo"
+      class="container-logo"
+      href="https://www.flaticon.com/br/autor"
+      src="img/livro.png"
+    />
+    
+
+      
+  </div>
+  
+    
+
+    
+  <footer>
+    
+    
+    <ul
+      class="footer"
+    >
+      
+      
+      <a
+        href="https://github.com/BiancaSherika"
+        target="_blank"
+      >
+        <strong>
+          @Bianca Sherika
+        </strong>
+      </a>
+      
+      
+      <a
+        href="https://github.com/ly-cardozo"
+        target="_blank"
+      >
+        <strong>
+          @Eliane Cardozo
+        </strong>
+      </a>
+      
+      
+      <a
+        href="https://github.com/gabrielasilva1991"
+        target="_blank"
+      >
+        <strong>
+          @Gabriela Silva
+        </strong>
+      </a>
+      
+      
+      <a
+        href="https://www.laboratoria.la/"
+        target="_blank"
+      >
+        <strong>
+          by Laboratória
+        </strong>
+      </a>
+      
+    
+    </ul>
+    
+    
+  </footer>
+  
+    
+</div>
+`;

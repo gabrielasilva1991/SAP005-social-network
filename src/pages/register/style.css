@@ -8,14 +8,17 @@
     flex-direction: column;    
     text-align: center;
     align-items: center;
+    align-content: center;
+    justify-content: center;
     border-color: rgb(19, 2, 2);
     border-style: groove;
     border-radius: 40px;
     padding: 40px;
-    margin: 50px;
+    margin: 0 auto;
     background-color: #e0bcdd;
-    /* margin-right: 500px;
-    margin-left: 500px; */
+    max-width: 350px;
+    position: absolute;
+    min-width: 100px;
 }
 
 .paragrafe{
@@ -25,10 +28,10 @@
 .input-register{
     width: 150px;
     font-size: 90%;
-    padding: 10px 5px 10px 5px;  /* superior | direita | inferior | esquerda */
+    padding: 10px 5px;  /* superior | direita | inferior | esquerda */
     border-style: groove;
     margin: 10px; 
-    border-radius: 10px 10px 10px 10px; 
+    border-radius: 10px; 
     background-color: white; 
 }
 
@@ -39,7 +42,7 @@
     border-style: groove;
     border-color: violet;
     margin: 10px;  
-    border-radius: 20px 20px 20px 20px; 
+    border-radius: 20px; 
     cursor: pointer;
     background-color: violet;
 }
@@ -55,12 +58,6 @@
     margin: 200px;
     padding: 50px;
 }
-.button-register{
-    width: 100px;
-}
-
-
-
 
 
 /* 
@@ -70,5 +67,4 @@ vh - valor que acompanha a altura página
 em - ligado com tamanho da fonte do eemento q ta usando 
 .Cor01 {color: #4b204b;}
 .Cor02 {color: #e0bcdd;}
-.Cor03 {color: #993399;}
-*/
+.Cor03 {color: #993399;}*/}

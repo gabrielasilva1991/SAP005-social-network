@@ -1,4 +1,4 @@
-import { registerUser } from '../../services/index.js';
+import { registerUser, saveUserUpdate, saveUser } from '../../services/index.js';
 
 export const Register = () => {
   const rootElement = document.createElement("div");
@@ -18,7 +18,17 @@ export const Register = () => {
     const email = rootElement.querySelector("#email").value;
     const password = rootElement.querySelector("#password").value;
     e.preventDefault();
-    registerUser(name, email, password);
+    registerUser(email, password)
+    .then((userUpdate) => {
+      saveUserUpdate(name)
+      saveUser(userUpdate.user, email, name)
+      alert("Conta criada com sucesso");
+      onNavigate("/")
+    })    
+    .catch((error) => {
+      console.log(error);
+      alert("Falha ao realizar o cadastro")
+    });
   });
   return rootElement;
 };

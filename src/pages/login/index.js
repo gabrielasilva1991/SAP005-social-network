@@ -1,5 +1,5 @@
-import { loginWithGoogle, signIn } from '../../services/index.js';
-import { onNavigate } from '../../utils/history.js';
+import { loginWithGoogle, signIn, checkLogin } from "../../services/index.js";
+import { onNavigate } from "../../utils/history.js";
 
 export const Login = () => {
   const rootElement = document.createElement("div");
@@ -31,23 +31,44 @@ export const Login = () => {
     </ul>
     </footer>
     `;
-  
+
   rootElement.querySelector("#button-login").addEventListener("click", (e) => {
     const email = rootElement.querySelector("#e-mail").value;
     const password = rootElement.querySelector("#my-password").value;
     e.preventDefault();
-    return signIn(email, password);
+    return signIn(email, password)
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        checkLogin(user);
+        onNavigate("/posts");
+        alert("Login realizado com sucesso");
+        alert(`Olá, ${firebase.auth().currentUser.displayName}`);
+      })
+      .catch(() => {
+        alert("Email e/ou senha incorretos");
+        onNavigate("/");
+      });
   });
 
   rootElement.querySelector("#button-google").addEventListener("click", (e) => {
     e.preventDefault();
-    return loginWithGoogle();
+    return loginWithGoogle()
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        checkLogin(user);
+        alert(`Olá, ${firebase.auth().currentUser.displayName}`);
+      })
+      .catch(() => {
+        alert("Você não conectou com o Google, tente novamente");
+      });
   });
 
-  rootElement.querySelector("#button-create-account").addEventListener("click", (e) => {
-    e.preventDefault();
-    onNavigate("/register");
-  });
+  rootElement
+    .querySelector("#button-create-account")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      onNavigate("/register");
+    });
 
   return rootElement;
 };
