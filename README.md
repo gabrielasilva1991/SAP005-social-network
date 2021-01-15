@@ -114,6 +114,6 @@ Definimos que para as próximas refatorações iremos seguir nos seguintes aprim
 
 Esta aplicação foi desenvolvida com muita dedicação pelas devs: 
 
-:princess: <a href“https://github.com/BiancaSherika“>Bianca Shérika</a><br/>
-:princess: <a href“https://github.com/ly-cardozo“>Eliane Cardozo</a><br/>
-:princess: <a href“https://github.com/gabrielasilva1991/“>Gabriela Silva</a>
+:princess: <a href=“https://github.com/BiancaSherika“> Bianca Shérika</a><br/>
+:princess: <a href=“https://github.com/ly-cardozo“> Eliane Cardozo</a><br/>
+:princess: <a href=“https://github.com/gabrielasilva1991/“> Gabriela Silva</a>
