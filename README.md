@@ -1,4 +1,4 @@
-# A Menina que Trocava Livros
+# :books: A Menina que Trocava Livros
 
 Acesse a aplicação aqui: >>>>>>>>>>>>>>>>>>> LINK
 
@@ -14,7 +14,7 @@ Acesse a aplicação aqui: >>>>>>>>>>>>>>>>>>> LINK
 
 ---
 
-## 1.Apresentação :green_book:
+## 1.Apresentação :book:
 
 Projeto desenvolvido em trio durante o Bootcamp da <a href=“https://github.com/Laboratoria“>Laboratória</a> com o objetivo de construir uma aplicação web em formato de rede social capaz de armazenar, manipular, excluir e visualizar dados de acordo com a necessidade do usuário. Para hospedagem dos dados utilizamos o <a href=“https://firebase.google.com/>Firebase</a>, o banco de dados do Google. A temática escolhida para representar o projeto foi livros e leitores.
  
