@@ -34,7 +34,7 @@ Após pesquisa de mercado, caracterizamos nossos usuários como sendo os leitore
 
 Realizamos entrevistas para investigação para com potenciais usuários a respeito do interesse em utilização de rede social focada a leitura e troca de livros e de como seria a visualização da página e suas funcionalidades esperadas, e obtivemos as seguintes respostas:
 
-![](/src/img/pesquisa.PNG)
+![](/src/img/pesquisas.PNG) 
 
 ### Histórias de Usuário 
 
