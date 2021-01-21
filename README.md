@@ -77,13 +77,13 @@ Os testes realizados com os usuários trouxeram os seguintes problemas, e tivemo
 
 Após analisarmos os testes de usabilidade e resolver as dificuldades, finalizamos o layout da página desta forma:
 
-![](/src/img/layout_web01.png) ![](/src/img/layout_web02.png) ![](/src/img/layout_web03.png)
+![](/src/img/layout_web01.PNG) ![](/src/img/layout_web02.PNG) ![](/src/img/layout_web03.PNG)
 
 ### Responsividade :iphone:
 
 Sabendo que smarthphones é um meio de acesso à internet muito importante e amplamente utilizado, elaboramos a responsividade da aplicação de forma que o resultado foi esse:
 
-![](/src/img/layout_mobile.png)
+![](/src/img/layout_mobile.PNG)
 
 
 ## 5.Desenvolvimento :fireworks:
