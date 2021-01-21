@@ -31,7 +31,7 @@ export const signIn = (email, password) => {
 };
 
 export const logOut = () => {
-  firebase.auth().signOut();
+  return firebase.auth().signOut();
 };
 
 export const checkLogin = () => {

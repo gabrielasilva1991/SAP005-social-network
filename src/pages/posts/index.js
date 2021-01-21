@@ -1,5 +1,6 @@
 import { logOut, creatPost, getPost } from "../../services/index.js";
 import { showPosts } from "../../componentes/showposts.js";
+import { onNavigate } from "../../utils/history.js";
 
 export const Posts = () => {
   const rootElement = document.createElement("div");
@@ -20,7 +21,10 @@ export const Posts = () => {
   
   rootElement.querySelector("#logout").addEventListener("click", (e) => {
     e.preventDefault();
-    return logOut();
+    logOut()
+    .then(()=> {
+      onNavigate("/");
+    })
   });
 
   const newPost = rootElement.querySelector("#new-post");

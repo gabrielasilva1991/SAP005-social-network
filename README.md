@@ -77,13 +77,13 @@ Os testes realizados com os usuários trouxeram os seguintes problemas, e tivemo
 
 Após analisarmos os testes de usabilidade e resolver as dificuldades, finalizamos o layout da página desta forma:
 
-PRINTS PAGINA NOTEBOOK
+![](/src/img/layout_web01.png) ![](/src/img/layout_web02.png) ![](/src/img/layout_web03.png)
 
 ### Responsividade :iphone:
 
 Sabendo que smarthphones é um meio de acesso à internet muito importante e amplamente utilizado, elaboramos a responsividade da aplicação de forma que o resultado foi esse:
 
-PRINTS PÁGINA CELULAR
+![](/src/img/layout_mobile.png)
 
 
 ## 5.Desenvolvimento :fireworks:

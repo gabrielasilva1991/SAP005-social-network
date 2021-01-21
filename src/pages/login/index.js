@@ -56,6 +56,7 @@ export const Login = () => {
       .then(() => {
         const user = firebase.auth().currentUser;
         checkLogin(user);
+        onNavigate("/posts");
         alert(`Olá, ${firebase.auth().currentUser.displayName}`);
       })
       .catch(() => {
