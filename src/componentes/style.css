@@ -60,13 +60,12 @@ body {
     justify-content: space-evenly;
     align-content: center;
     align-items: center;
-    /* margin: 0 auto; */
     text-align: center;
     font-size: 1em;
     padding: 5px;
 } 
 
-.like,.edit,.delete,.save,
+.button-like,.button-edit,.button-delete,.button-save,
 .img-like,.img-edit,.img-delete,.img-save {
     cursor: pointer;
     background:transparent;
