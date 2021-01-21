@@ -16,7 +16,7 @@ Acesse a aplicação aqui: https://rede-social-4f31b.web.app/
 
 ## 1.Apresentação :book:
 
-Projeto desenvolvido em trio durante o Bootcamp da <a href=“https://github.com/Laboratoria“>Laboratória</a> com o objetivo de construir uma aplicação web em formato de rede social capaz de armazenar, manipular, excluir e visualizar dados de acordo com a necessidade do usuário. Para hospedagem dos dados utilizamos o <a href=“https://firebase.google.com/>Firebase</a>, o banco de dados do Google. A temática escolhida para representar o projeto foi livros e leitores.
+Projeto desenvolvido em trio durante o Bootcamp da <a href=“www.github.com/Laboratoria“>Laboratória</a> com o objetivo de construir uma aplicação web em formato de rede social capaz de armazenar, manipular, excluir e visualizar dados de acordo com a necessidade do usuário. Para hospedagem dos dados utilizamos o <a href=“www.firebase.google.com/>Firebase</a>, o banco de dados do Google. A temática escolhida para representar o projeto foi livros e leitores.
  
  ### 2.Objetivo :trophy:
  
@@ -117,6 +117,6 @@ Definimos que para as próximas refatorações iremos seguir nos seguintes aprim
 
 Esta aplicação foi desenvolvida com muita dedicação pelas devs: 
 
-:princess: <a href=“https://github.com/BiancaSherika“> Bianca Shérika</a><br/>
-:princess: <a href=“https://github.com/ly-cardozo“> Eliane Cardozo</a><br/>
-:princess: <a href=“https://github.com/gabrielasilva1991/“> Gabriela Silva</a>
+:princess: <a href=“www.github.com/BiancaSherika“> Bianca Shérika</a><br/>
+:princess: <a href=“www.github.com/ly-cardozo“> Eliane Cardozo</a><br/>
+:princess: <a href=“www.github.com/gabrielasilva1991/“> Gabriela Silva</a>
