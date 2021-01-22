@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: 'Andika New Basic', sans-serif;
     background-color:#0d1117;
+    font-family: 'Andika New Basic', sans-serif;
 }
 
 .post-individual {
@@ -44,22 +44,11 @@ body {
 .container-like {
     display: flex;
     flex-direction: none;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
     align-items: center;
     min-width: 100px;
     max-width: 100px;
-    text-align: center;
-    font-size: 1em;
-    padding: 5px;
-} 
-
-.container-like {
-    display: flex;
-    flex-direction: none;
-    justify-content: space-evenly;
-    align-content: center;
-    align-items: center;
     text-align: center;
     font-size: 1em;
     padding: 5px;

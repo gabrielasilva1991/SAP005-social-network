@@ -51,9 +51,10 @@ export const showPosts = (post) => {
       );
     }
   });
+
   postDiv.querySelector('.button-delete').addEventListener('click', (e) => {
     e.preventDefault();
-    const deleteOk = confirm('Deseja deletar o post?');
+    const deleteOk = window.confirm('Deseja deletar o post?');
     if (deleteOk === true) {
       deletePost(post.postId);
       postDiv.innerHTML = '';
