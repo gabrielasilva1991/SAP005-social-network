@@ -9,7 +9,7 @@ describe('loginWithGoogle', () => {
   });
   it('should call firebase', () => {
     loginWithGoogle('provider');
-    expect(firebase.auth).toBeCalled();
+    expect(firebase.auth().signInWithPopup).toBeCalled();
   });
 });
 
