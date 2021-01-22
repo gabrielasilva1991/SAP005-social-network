@@ -1,12 +1,10 @@
-import { onNavigate } from './index.js';
-
+import { onNavigate } from './history.js';
 
 describe('onNavigate', () => {
-    it('should be a function', () => {
-        expect(typeof onNavigate).toBe('function');
-    }); 
-
-    it('should load the page', () => {
-        expect(onNavigate()).toMatchSnapshot();
-    });  
+  it('should be a function', () => {
+    expect(typeof onNavigate).toBe('function');
+  });
+  it('should load the page', () => {
+    expect(onNavigate()).toMatchSnapshot();
+  });
 });

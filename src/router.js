@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
     .getElementById('login')
     .addEventListener('click', (e) => {
       e.preventDefault();
-      onNavigate('/')
+      onNavigate('/');
     });
   routeRender();
 });

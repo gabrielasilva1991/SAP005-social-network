@@ -1,74 +1,74 @@
-import { loginWithGoogle, signIn, checkLogin } from "../../services/index.js";
-import { onNavigate } from "../../utils/history.js";
+import { loginWithGoogle, signIn, checkLogin } from '../../services/index.js';
+import { onNavigate } from '../../utils/history.js';
 
 export const Login = () => {
-  const rootElement = document.createElement("div");
+  const rootElement = document.createElement('div');
   rootElement.innerHTML = `
-    <div class="container"
+    <div class='container'
       <div>
-        <form class="container-login">
-          <h1 class="title">A Menina que Trocava Livros</h1>              
-          <input type="email" class="input-login" id="e-mail" placeholder ="E-mail"/>
-          <input type="password" class="input-login" id="my-password" placeholder="Senha"/>       
-          <button type="submit" class="button-login" id="button-login">Entrar</button>
-          <button type="submit" class="button-create-account" id="button-create-account">Criar Conta</button>
-          <button class="button-google" id="button-google"><img id="img-google" src="img/google.png" alt="img-google"></button>
-          <label class="google" >Entrar com o Google</label>
-          <script type="module" src="./register/index.js"></script>
+        <form class='container-login'>
+          <h1 class='title'>A Menina que Trocava Livros</h1>              
+          <input type='email' class='input-login' id='e-mail' placeholder ='E-mail'/>
+          <input type='password' class='input-login' id='my-password' placeholder='Senha'/>       
+          <button type='submit' class='button-login' id='button-login'>Entrar</button>
+          <button type='submit' class='button-create-account' id='button-create-account'>Criar Conta</button>
+          <button class='button-google' id='button-google'><img id='img-google' src='img/google.png' alt='img-google'></button>
+          <label class='google' >Entrar com o Google</label>
+          <script type='module' src='./register/index.js'></script>
         </form>
 
-        <img class="container-logo" src="img/livro.png" <a href="https://www.flaticon.com/br/autor" alt="Logo">
+        <img class='container-logo' src='img/livro.png' <a href='https://www.flaticon.com/br/autor' alt='Logo'>
 
       </div>
     </div>
 
     <footer>
-    <ul class="footer">
-      <a href="https://github.com/BiancaSherika" target="_blank"><strong>@Bianca Sherika</strong></a>
-      <a href="https://github.com/ly-cardozo" target="_blank"><strong>@Eliane Cardozo</strong></a>
-      <a href="https://github.com/gabrielasilva1991" target="_blank"><strong>@Gabriela Silva</strong></a>
-      <a href="https://www.laboratoria.la/" target="_blank"><strong>by Laboratória</strong></a>
+    <ul class='footer'>
+      <a href='https://github.com/BiancaSherika' target='_blank'><strong>@Bianca Sherika</strong></a>
+      <a href='https://github.com/ly-cardozo' target='_blank'><strong>@Eliane Cardozo</strong></a>
+      <a href='https://github.com/gabrielasilva1991' target='_blank'><strong>@Gabriela Silva</strong></a>
+      <a href='https://www.laboratoria.la/' target='_blank'><strong>by Laboratória</strong></a>
     </ul>
     </footer>
     `;
 
-  rootElement.querySelector("#button-login").addEventListener("click", (e) => {
-    const email = rootElement.querySelector("#e-mail").value;
-    const password = rootElement.querySelector("#my-password").value;
+  rootElement.querySelector('#button-login').addEventListener('click', (e) => {
+    const email = rootElement.querySelector('#e-mail').value;
+    const password = rootElement.querySelector('#my-password').value;
     e.preventDefault();
     return signIn(email, password)
       .then(() => {
         const user = firebase.auth().currentUser;
         checkLogin(user);
-        onNavigate("/posts");
-        alert("Login realizado com sucesso");
+        onNavigate('/posts');
+        alert('Login realizado com sucesso');
         alert(`Olá, ${firebase.auth().currentUser.displayName}`);
       })
       .catch(() => {
-        alert("Email e/ou senha incorretos");
-        onNavigate("/");
+        alert('Email e/ou senha incorretos');
+        onNavigate('/');
       });
   });
 
-  rootElement.querySelector("#button-google").addEventListener("click", (e) => {
+  rootElement.querySelector('#button-google').addEventListener('click', (e) => {
     e.preventDefault();
     return loginWithGoogle()
       .then(() => {
         const user = firebase.auth().currentUser;
         checkLogin(user);
-        onNavigate("/posts");
+        onNavigate('/posts');
         alert(`Olá, ${firebase.auth().currentUser.displayName}`);
       })
       .catch(() => {
-        alert("Você não conectou com o Google, tente novamente");
+        alert('Você não conectou com o Google, tente novamente');
       });
   });
 
   rootElement
-    .querySelector("#button-create-account")
-    .addEventListener("click", (e) => {
+    .querySelector('#button-create-account')
+    .addEventListener('click', (e) => {
       e.preventDefault();
-      onNavigate("/register");
+      onNavigate('/register');
     });
 
   return rootElement;
