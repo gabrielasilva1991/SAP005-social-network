@@ -3,7 +3,6 @@ import {
 } from '../services/index.js';
 
 export const showPosts = (post) => {
-  // const postCreat = document.querySelector("#container-post"); // limpa td da tela
   const postDiv = document.createElement('div');
   postDiv.classList.add('post-individual');
   // postDiv.setAttribute('id', post.postId);
@@ -11,7 +10,6 @@ export const showPosts = (post) => {
   const userEmailFirebase = firebase.auth().currentUser.email;
   const postUserEmail = post.userEmail;
   // console.log(userEmailFirebase, postUserEmail);
-
   if (userEmailFirebase === postUserEmail) {
     postDiv.innerHTML = `
     <div class='container-user'>
@@ -43,9 +41,7 @@ export const showPosts = (post) => {
       const deleteOk = window.confirm('Deseja deletar o post?');
       if (deleteOk === true) {
         deletePost(post.postId);
-        postDiv.innerHTML = '';
-        // postCreat.innerHTML = ''; limpa td da tela
-        // postDiv.querySelector('.container-text').innerHTML = '';
+        postDiv.remove('.post-individual');
       }
     });
 
