@@ -10,6 +10,7 @@ export const showPosts = (post) => {
   const userEmailFirebase = firebase.auth().currentUser.email;
   const postUserEmail = post.userEmail;
   // console.log(userEmailFirebase, postUserEmail);
+  
   if (userEmailFirebase === postUserEmail) {
     postDiv.innerHTML = `
     <div class='container-user'>
