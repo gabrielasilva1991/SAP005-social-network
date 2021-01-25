@@ -43,18 +43,18 @@ export const creatPost = (postCreat) => firebase.firestore().collection('posts')
 export const getPost = () => firebase.firestore().collection('posts')
   .orderBy('date', 'desc').get();
 
-export const likePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).update({
+export const likePost = (postId) => firebase.firestore().collection('posts').doc(postId).update({
   likes: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.uid),
 });
 
-export const disLikePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).update({
+export const disLikePost = (postId) => firebase.firestore().collection('posts').doc(postId).update({
   likes: firebase.firestore.FieldValue.arrayRemove(firebase.auth().currentUser.uid),
 });
 
 export const deletePost = (postId) => firebase.firestore().collection('posts').doc(postId).delete();
 
-export const editPost = (id, editedPost) => firebase.firestore()
-  .collection('posts').doc(id).update({
+export const editPost = (idPost, editedPost) => firebase.firestore()
+  .collection('posts').doc(idPost).update({
     text: editedPost,
   })
   .then(() => true)

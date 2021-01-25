@@ -54,8 +54,8 @@ body {
     padding: 5px;
 } 
 
-.button-like,.button-edit,.button-delete,.button-save,
-.img-like,.img-edit,.img-delete,.img-save {
+.button-like,.button-edit,.button-delete,.button-save,.button-cancel,
+.img-like,.img-edit,.img-delete,.img-save,.img-cancel {
     cursor: pointer;
     background:transparent;
     border: 1px;
@@ -64,7 +64,7 @@ body {
 }
 
 .on-edit {
-    display:none
+    display: none;
 }
 
  @media (max-width:400px) {
