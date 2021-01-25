@@ -3,16 +3,16 @@ import {
 } from '../services/index.js';
 
 export const showPosts = (post) => {
-  //const postCreat = document.querySelector("#container-post"); // limpa td da tela
+  // const postCreat = document.querySelector("#container-post"); // limpa td da tela
   const postDiv = document.createElement('div');
   postDiv.classList.add('post-individual');
-  //postDiv.setAttribute('id', post.postId); 
-  //atribui id único p/ cada div (id de cada post no firestore)
-  const userEmailFirebase = firebase.auth().currentUser.email
-  const postUserEmail = post.userEmail
-  console.log(userEmailFirebase, postUserEmail)
+  // postDiv.setAttribute('id', post.postId);
+  // atribui id único p/ cada div (id de cada post no firestore)
+  const userEmailFirebase = firebase.auth().currentUser.email;
+  const postUserEmail = post.userEmail;
+  // console.log(userEmailFirebase, postUserEmail);
 
-  if (userEmailFirebase === postUserEmail ) {
+  if (userEmailFirebase === postUserEmail) {
     postDiv.innerHTML = `
     <div class='container-user'>
       <p class='show-name' id='show-name'>${post.userName}</p>
@@ -44,44 +44,43 @@ export const showPosts = (post) => {
       if (deleteOk === true) {
         deletePost(post.postId);
         postDiv.innerHTML = '';
-        //postCreat.innerHTML = ''; limpa td da tela
-        //postDiv.querySelector('.container-text').innerHTML = ''; 
+        // postCreat.innerHTML = ''; limpa td da tela
+        // postDiv.querySelector('.container-text').innerHTML = '';
       }
     });
 
-    postDiv.querySelector('.button-edit').addEventListener('click', (e) => {
-      e.preventDefault();
-      showAreaToEdit(e);
-    });
-    
-    const showAreaToEdit = () => {
-      const textArea = postDiv.querySelector('.on-edit');
-      textArea.style.display = 'block';
-      const saveButton = postDiv.querySelector('.button-save');
-      saveButton.addEventListener('click', () => {
-        saveEditedPost(postDiv);
-      });
-    };
-
-    const saveEditedPost = (postDiv) => {
+    const saveEditedPost = () => {
       const oldText = postDiv.querySelector('.show-text');
       const editedText = postDiv.querySelector('.edit-post').value;
-      const textArea = postDiv.querySelector('.on-edit')
+      const textArea = postDiv.querySelector('.on-edit');
       editPost(post.postId, editedText)
         .then(() => {
           oldText.innerHTML = editedText;
           textArea.style.display = 'none';
         })
         .catch(() => {
-         alert('Erro, tente novamente');
+          alert('Erro, tente novamente');
         });
-    };  
-    
+    };
+
+    const showAreaToEdit = () => {
+      const textArea = postDiv.querySelector('.on-edit');
+      textArea.style.display = 'block';
+      const saveButton = postDiv.querySelector('.button-save');
+      saveButton.addEventListener('click', () => {
+        saveEditedPost();
+      });
+    };
+
+    postDiv.querySelector('.button-edit').addEventListener('click', (e) => {
+      e.preventDefault();
+      showAreaToEdit(e);
+    });
+
     postDiv.querySelector('.button-cancel').addEventListener('click', () => {
       const textArea = postDiv.querySelector('.on-edit');
       textArea.style.display = 'none';
     });
-
   } else {
     postDiv.innerHTML = `
     <div class='container-user'>
@@ -99,7 +98,7 @@ export const showPosts = (post) => {
     </div> 
     `;
   }
-  
+
   let postLikes = post.likes;
   postDiv.querySelector('.button-like').addEventListener('click', (e) => {
     e.preventDefault();

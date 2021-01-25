@@ -19,7 +19,7 @@ describe('showPosts', () => {
     expect(typeof showPosts).toBe('function');
   });
   it('When the user clicks on the button they should like the post and show the like on the screen', () => {
-    showPosts(mockPost).querySelector('.like').dispatchEvent(new Event('click'));
+    showPosts(mockPost).querySelector('.button-like').dispatchEvent(new Event('click'));
     expect(services.likePost).toHaveBeenCalled();
   });
   it('When the user clicks on the button he should dislike the post and show it on the screen', () => {
@@ -34,11 +34,12 @@ describe('showPosts', () => {
     showPosts(mockPost).querySelector('.button-edit').dispatchEvent(new Event('click'));
     showPosts(mockPost).querySelector('.on-edit');
   });
-  it('When the user clicks the button, he must save the edited post', () => {
+  it('When the user clicks the button, the edited post must be saved and displayed on the screen', () => {
     showPosts(mockPost).querySelector('.button-save').dispatchEvent(new Event('click'));
+    expect(services.editPost).toHaveBeenCalled();
   });
-  it('When the user clicks the button, the edited post must be displayed on the screen', () => {
-    showPosts(mockPost).querySelector('.button-save').dispatchEvent(new Event('click'));
+  it('When the user clicks the button, they must cancel the edit', () => {
+    showPosts(mockPost).querySelector('.button-cancel').dispatchEvent(new Event('click'));
     expect(services.editPost).toHaveBeenCalled();
   });
 });
