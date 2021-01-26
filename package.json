@@ -20,6 +20,9 @@
   "jest": {
     "setupFiles": [
       "./jestSetup.js"
+    ],
+    "coveragePathIgnorePatterns" : [
+      "<rootDir>/src/services/" 
     ]
   },
   "devDependencies": {

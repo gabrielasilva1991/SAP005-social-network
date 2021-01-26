@@ -42,7 +42,7 @@ export const Login = () => {
         checkLogin(user);
         onNavigate('/posts');
         alert('Login realizado com sucesso');
-        alert(`Olá, ${firebase.auth().currentUser.displayName}`);
+        alert(`Olá, ${user.displayName}`);
       })
       .catch(() => {
         alert('Email e/ou senha incorretos');
@@ -57,7 +57,7 @@ export const Login = () => {
         const user = firebase.auth().currentUser;
         checkLogin(user);
         onNavigate('/posts');
-        alert(`Olá, ${firebase.auth().currentUser.displayName}`);
+        alert(`Olá, ${user.displayName}`);
       })
       .catch(() => {
         alert('Você não conectou com o Google, tente novamente');
