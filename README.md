@@ -8,7 +8,7 @@ Acesse a aplicação aqui: https://rede-social-4f31b.web.app/
 - [2. Objetivo](#2-objetivo)
 - [3. Usuários](#3-usuários)
 - [4. Interface de Usuário](#4-interface-de-usuário)
-- [5. Desensolvimento](#5-desenvolvimento)
+- [5. Desenvolvimento](#5-desenvolvimento)
 - [6. Pontos de Melhoria](#6-pontos-de-melhoria)
 - [7. Devas](#7-devas)
 
