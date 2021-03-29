@@ -2,6 +2,10 @@
 
 Acesse a aplicação aqui: https://rede-social-4f31b.web.app/
 
+### Usuário para teste :mag_right:
+
+`livros@ameninaquetrocavalivros.com / Senha: livros`
+
 ## Índice
 
 - [1. Apresentação](#1-apresentação)
